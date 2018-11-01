@@ -4,3 +4,4 @@ bin/**
 /_build/**
 .project
 .settings/**
+**/org.sonarlint.eclipse.core.prefs
