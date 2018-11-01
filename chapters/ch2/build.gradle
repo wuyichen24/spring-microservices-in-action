@@ -1,3 +1,4 @@
 dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.4.4.RELEASE'
 }

@@ -87,6 +87,7 @@ subprojects {
         // TestNG
         compile 'org.testng:testng:6.5.2'
         compile 'org.easymock:easymock:3.4'
-
+        
+		compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.4.4.RELEASE', ext: 'pom'
     }
 }
