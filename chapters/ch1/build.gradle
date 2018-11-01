@@ -1,0 +1,4 @@
+dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.4.4.RELEASE', ext: 'pom'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.4.RELEASE'
+}

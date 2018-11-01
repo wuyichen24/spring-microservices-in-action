@@ -1,0 +1,92 @@
+
+/*
+ * Root build file.  Defines a modular/sub-project approach to builds.
+ *
+ * Some ideas on multiproject organization:
+ *   https://softnoise.wordpress.com/2014/09/07/gradle-sub-project-test-dependencies-in-multi-project-builds/
+ */
+
+allprojects {
+    apply plugin: 'idea'
+    idea {
+        module {
+            inheritOutputDirs = true
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies { classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5" }
+}
+
+// To apply a third-party plugin from an external build script,
+// you have to use the plugin's fully qualified class name, rather than its ID
+apply plugin: "org.sonarqube"
+
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: "jacoco"
+
+    buildDir = new File(rootProject.projectDir, "_build/" + project.name)
+
+    jacoco {
+        toolVersion = "0.7.6.201602180812"
+        reportsDir = file("$buildDir/customJacocoReportDir")
+    }
+
+
+    //defaultTasks 'clean', 'run'
+    compileJava {
+        sourceCompatibility = '1.8'
+    }
+
+
+    sourceSets {
+        main {
+            java.srcDirs = [file('src/java')]
+            resources.srcDirs = [file('src/resources')]
+        }
+        test {
+            java.srcDirs = [file('test/unit')]
+            resources.srcDirs = [file('test/resources')]
+        }
+    }
+
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+	
+	jar {
+	    manifest {
+	        attributes('Implementation-Title': project.name,
+	                   'Implementation-Version': project.version)
+	    }
+	}
+
+
+    // common dependencies for all subprojects
+    dependencies {
+
+        // unit testing
+        testCompile 'junit:junit:4.12'
+
+        compile 'junit-addons:junit-addons:1.4'
+
+        // multi-thread unit testing
+        testCompile 'com.vmlens:concurrent-junit:1.0.0'
+
+        // TestNG
+        compile 'org.testng:testng:6.5.2'
+        compile 'org.easymock:easymock:3.4'
+
+    }
+}
