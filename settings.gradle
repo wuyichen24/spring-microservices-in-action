@@ -1,12 +1,13 @@
 rootProject.name = 'spring-microservices-in-action'
 
 include 'chapters:ch1'
-include 'chapters:ch2'
-include 'chapters:ch3'
-include 'chapters:ch4'
-include 'chapters:ch5'
-include 'chapters:ch6'
-include 'chapters:ch7'
-include 'chapters:ch8'
-include 'chapters:ch9'
-include 'chapters:ch10'
+
+include 'server:config-server'
+include 'server:eureka-server'
+include 'server:zuul-server'
+include 'server:zipkin-server'
+include 'service:authentication-service'
+include 'service:licensing-service'
+include 'service:organization-service'
+include 'service:specialroutes-service'
+
