@@ -5,4 +5,5 @@ bin/**
 .project
 .settings/**
 **/.settings
+**/.classpath
 **/org.sonarlint.eclipse.core.prefs
