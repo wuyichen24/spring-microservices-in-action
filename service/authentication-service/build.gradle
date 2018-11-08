@@ -1,3 +1,15 @@
 dependencies {
-	
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-config-client', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-security', version: '1.2.3.RELEASE'
+	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.2.3.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.9.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-rsa', version: '1.0.7.RELEASE'
+	compile group: 'postgresql', name: 'postgresql', version: '9.1-901.jdbc4'
+	testCompile group: 'com.h2database', name: 'h2', version: '1.4.177'
 }

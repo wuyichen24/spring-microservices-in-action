@@ -1,3 +1,7 @@
 dependencies {
-	
+	compile group: 'io.zipkin.java', name: 'zipkin-autoconfigure-ui', version: '1.14.4'
+	compile group: 'io.zipkin.java', name: 'zipkin-server', version: '1.14.4'
+	compile group: 'io.zipkin.java', name: 'zipkin-autoconfigure-storage-mysql', version: '1.14.4'
+	testCompile group: 'com.h2database', name: 'h2', version: '1.4.177'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '1.4.4.RELEASE'
 }
