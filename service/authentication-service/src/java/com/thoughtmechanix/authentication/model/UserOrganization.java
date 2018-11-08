@@ -33,6 +33,4 @@ public class UserOrganization implements Serializable {
     public void setOrganizationId(String organizationId) {
         this.organizationId = organizationId;
     }
-
-
 }

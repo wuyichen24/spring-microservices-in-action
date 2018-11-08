@@ -1,11 +1,9 @@
 package com.thoughtmechanix.authentication.utils;
 
-
-import com.thoughtmechanix.authentication.utils.*;
 import org.springframework.util.Assert;
 
 public class UserContextHolder {
-    private static final ThreadLocal<UserContext> userContext = new ThreadLocal<UserContext>();
+    private static final ThreadLocal<UserContext> userContext = new ThreadLocal<>();
 
     public static final UserContext getContext(){
         UserContext context = userContext.get();

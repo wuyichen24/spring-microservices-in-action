@@ -12,12 +12,10 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-
 public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
     private HystrixConcurrencyStrategy existingConcurrencyStrategy;
 
-    public ThreadLocalAwareStrategy(
-            HystrixConcurrencyStrategy existingConcurrencyStrategy) {
+    public ThreadLocalAwareStrategy(HystrixConcurrencyStrategy existingConcurrencyStrategy) {
         this.existingConcurrencyStrategy = existingConcurrencyStrategy;
     }
 
@@ -43,17 +41,14 @@ public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
                                             HystrixProperty<Integer> keepAliveTime, TimeUnit unit,
                                             BlockingQueue<Runnable> workQueue) {
         return existingConcurrencyStrategy != null
-                ? existingConcurrencyStrategy.getThreadPool(threadPoolKey, corePoolSize,
-                maximumPoolSize, keepAliveTime, unit, workQueue)
-                : super.getThreadPool(threadPoolKey, corePoolSize, maximumPoolSize,
-                keepAliveTime, unit, workQueue);
+                ? existingConcurrencyStrategy.getThreadPool(threadPoolKey, corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue)
+                : super.getThreadPool(threadPoolKey, corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
     }
 
     @Override
     public <T> Callable<T> wrapCallable(Callable<T> callable) {
         return existingConcurrencyStrategy != null
-                ? existingConcurrencyStrategy
-                .wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()))
+                ? existingConcurrencyStrategy.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()))
                 : super.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
     }
 }

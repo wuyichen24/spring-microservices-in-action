@@ -5,13 +5,11 @@ import com.thoughtmechanix.authentication.utils.UserContextHolder;
 
 import java.util.concurrent.Callable;
 
-
 public final class DelegatingUserContextCallable<V> implements Callable<V> {
     private final Callable<V> delegate;
-    private UserContext originalUserContext;
+    private UserContext       originalUserContext;
 
-    public DelegatingUserContextCallable(Callable<V> delegate,
-                                         UserContext userContext) {
+    public DelegatingUserContextCallable(Callable<V> delegate, UserContext userContext) {
         this.delegate = delegate;
         this.originalUserContext = userContext;
     }
@@ -21,14 +19,12 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 
         try {
             return delegate.call();
-        }
-        finally {
+        } finally {
             this.originalUserContext = null;
         }
     }
 
-    public static <V> Callable<V> create(Callable<V> delegate,
-                                         UserContext userContext) {
+    public static <V> Callable<V> create(Callable<V> delegate, UserContext userContext) {
         return new DelegatingUserContextCallable<V>(delegate, userContext);
     }
 }
