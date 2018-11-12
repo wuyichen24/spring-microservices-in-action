@@ -26,10 +26,10 @@ public class UserContextFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         logger.debug("Entering the UserContextFilter");
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        String correlationId = httpServletRequest.getHeader(UserContext.CORRELATION_ID);
-        String userId = httpServletRequest.getHeader(UserContext.USER_ID);
-        String authToken = httpServletRequest.getHeader(UserContext.AUTH_TOKEN);
-        String orgId = httpServletRequest.getHeader(UserContext.ORG_ID);
+        String             correlationId      = httpServletRequest.getHeader(UserContext.CORRELATION_ID);
+        String             userId             = httpServletRequest.getHeader(UserContext.USER_ID);
+        String             authToken          = httpServletRequest.getHeader(UserContext.AUTH_TOKEN);
+        String             orgId              = httpServletRequest.getHeader(UserContext.ORG_ID);
 
         UserContext.setCorrelationId(correlationId);
         UserContext.setUserId(userId);
