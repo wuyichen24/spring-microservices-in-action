@@ -11,7 +11,7 @@
 ####################################
 # 1st way: load from your local system
 #
-# For search location, you can use absolute path or relevant path with classpath
+# For search location, you can use absolute path or relative path with classpath
 ####################################
 
 server:
@@ -23,9 +23,11 @@ spring:
     config:
       server:
           native:
-             searchLocations: file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/licensingservice,
-                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/organizationservice
-#             searchLocations: classpath:config/,classpath:config/licensingservice
+#            Use absolute path
+#             searchLocations: file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/licensingservice,
+#                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/organizationservice
+#            Use relative path with classpath
+             searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice
 
 ####################################
 # 2nd way: load from a git repository
