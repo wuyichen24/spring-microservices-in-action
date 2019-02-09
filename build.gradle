@@ -19,20 +19,22 @@ buildscript {
     repositories {
         maven {
             url "https://plugins.gradle.org/m2/"
+            url 'https://repo.spring.io/plugins-snapshot'
         }
     }
-    dependencies { classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5" }
+    dependencies { 
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE"
+    }
 }
 
-// To apply a third-party plugin from an external build script,
-// you have to use the plugin's fully qualified class name, rather than its ID
 apply plugin: "org.sonarqube"
-
-
+apply plugin: "io.spring.dependency-management"
 
 subprojects {
     apply plugin: 'java'
     apply plugin: "jacoco"
+    apply plugin: io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 
     buildDir = new File(rootProject.projectDir, "_build/" + project.name)
 
@@ -41,12 +43,9 @@ subprojects {
         reportsDir = file("$buildDir/customJacocoReportDir")
     }
 
-
-    //defaultTasks 'clean', 'run'
     compileJava {
         sourceCompatibility = '1.8'
     }
-
 
     sourceSets {
         main {
@@ -59,6 +58,19 @@ subprojects {
         }
     }
 
+    // https://stackoverflow.com/questions/51988922/spring-dependency-management-gradle-plugin-doesnt-download-dependency
+    // Use Spring dependency management to manage all spring related libraries.
+    // But this block will not apply itself these dependencies to sub-project, only configured the dependencies contraints.
+    // In the script of your sub-project, you need to add libraries to your dependencies block.
+    dependencyManagement {
+        dependencies {
+            dependencySet(group: "org.springframework.boot", version: "1.4.4.RELEASE") {
+                entry "spring-boot-starter-web"
+                entry "spring-boot-starter-actuator"
+                entry "spring-boot-starter-data-jpa"
+            }
+        }
+    }
 
     repositories {
         mavenCentral()
