@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "64dde0fc-8d37-4350-ab90-7386575a380d",
+		"name": "Spring-Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic",
+			"item": [
+				{
+					"name": "http://localhost:8888/metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/metrics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8888/health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"health"
+							]
+						},
+						"description": "Health Check"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config",
+			"item": [
+				{
+					"name": "http://localhost:8888/licensingservice/default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"dev"
+							]
+						},
+						"description": "Get licensing service configuration (default)"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8888/licensingservice/dev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"dev"
+							]
+						},
+						"description": "Get licensing service configuration (dev)"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8888/licensingservice/prod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/prod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"prod"
+							]
+						},
+						"description": "Get licensing service configuration (prod)"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

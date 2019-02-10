@@ -1,5 +1,10 @@
 dependencies {
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-config-server', version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '1.4.4.RELEASE'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka', version: '1.4.4.RELEASE'
+
+    // include this package for enabling eureka (client discovery).
+    // if you don't want to start eureka, you can comment this package out.
+	// spring-cloud-starter-eureka is deprecated, so use spring-cloud-starter-netflix-eureka.
+	
+	// compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '1.4.4.RELEASE'
 }
