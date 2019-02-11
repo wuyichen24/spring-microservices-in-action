@@ -1,9 +1,10 @@
 spring:
   application:
-    name: licensingservice
+    name: licensingservice        # name of service
   profiles:
     active:
-      default
+      default                     # envrionment (default, dev, prod)
   cloud:
     config:
       enabled: true
+      uri: http://localhost:8888  # location of Spring Cloud Config server
