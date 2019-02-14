@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceConfig{
-	@Value("${example.property}")
+//	@Value("${example.property}")
 	private String exampleProperty="";
 
-	@Value("${redis.server}")
+//	@Value("${redis.server}")
 	private String redisServer="";
 
-	@Value("${redis.port}")
+//	@Value("${redis.port}")
 	private String redisPort="";
 
 	public String getExampleProperty(){
