@@ -17,31 +17,34 @@ import java.util.UUID;
 
 @Service
 public class LicenseService {
-    @Autowired
-    private LicenseRepository licenseRepository;
+//    @Autowired
+//    private LicenseRepository licenseRepository;
 
-    @Autowired
-    ServiceConfig config;
+//    @Autowired
+//    ServiceConfig config;
 
-    @Autowired
-    OrganizationRestTemplateClient organizationRestClient;
+//    @Autowired
+//    OrganizationRestTemplateClient organizationRestClient;
 
     public License getLicense(String organizationId,String licenseId) {
-        License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
-
-        Organization org = getOrganization(organizationId);
-
-        return license
-                .withOrganizationName( org.getName())
-                .withContactName( org.getContactName())
-                .withContactEmail( org.getContactEmail() )
-                .withContactPhone( org.getContactPhone() )
-                .withComment(config.getExampleProperty());
+//        License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
+//
+//        Organization org = getOrganization(organizationId);
+//
+//        return license
+//                .withOrganizationName( org.getName())
+//                .withContactName( org.getContactName())
+//                .withContactEmail( org.getContactEmail() )
+//                .withContactPhone( org.getContactPhone() )
+//                .withComment(config.getExampleProperty());
+    	
+    		return null;
     }
 
     @HystrixCommand
     private Organization getOrganization(String organizationId) {
-        return organizationRestClient.getOrganization(organizationId);
+//        return organizationRestClient.getOrganization(organizationId);
+    		return null;
     }
 
     private void randomlyRunLong(){
@@ -79,7 +82,8 @@ public class LicenseService {
     
     public List<License> getLicensesByOrg(String organizationId) {
         randomlyRunLong();
-        return licenseRepository.findByOrganizationId(organizationId);
+//        return licenseRepository.findByOrganizationId(organizationId);
+        return null;
     }
 
     private List<License> buildFallbackLicenseList(String organizationId){
@@ -95,14 +99,14 @@ public class LicenseService {
 
     public void saveLicense(License license){
         license.withId(UUID.randomUUID().toString());
-        licenseRepository.save(license);
+//        licenseRepository.save(license);
     }
 
     public void updateLicense(License license){
-    	licenseRepository.save(license);
+//    	licenseRepository.save(license);
     }
 
     public void deleteLicense(License license){
-        licenseRepository.delete( license.getLicenseId());
+//        licenseRepository.delete( license.getLicenseId());
     }
 }
