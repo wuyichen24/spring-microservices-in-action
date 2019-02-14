@@ -7,6 +7,7 @@ import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,30 +16,38 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+/**
+ * The implementation of the license service
+ *
+ * @author  Wuyi Chen
+ * @date    02/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Service
 public class LicenseService {
-//    @Autowired
-//    private LicenseRepository licenseRepository;
+    @Autowired
+    private LicenseRepository licenseRepository;
 
-//    @Autowired
-//    ServiceConfig config;
+    @Autowired
+    ServiceConfig config;
 
 //    @Autowired
 //    OrganizationRestTemplateClient organizationRestClient;
 
     public License getLicense(String organizationId,String licenseId) {
-//        License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
-//
-//        Organization org = getOrganization(organizationId);
-//
-//        return license
-//                .withOrganizationName( org.getName())
-//                .withContactName( org.getContactName())
-//                .withContactEmail( org.getContactEmail() )
-//                .withContactPhone( org.getContactPhone() )
-//                .withComment(config.getExampleProperty());
-    	
-    		return null;
+        License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
+    	return license.withComment(config.getExampleProperty());
+    }
+    
+    public List<License> getLicensesByOrg(String organizationId) {
+//        randomlyRunLong();
+        return licenseRepository.findByOrganizationId(organizationId);
+    }
+    
+    public void saveLicense(License license){
+        license.withId(UUID.randomUUID().toString());
+        licenseRepository.save(license);
     }
 
     @HystrixCommand
@@ -80,11 +89,7 @@ public class LicenseService {
                      @HystrixProperty(name="metrics.rollingStats.numBuckets", value="5")}
     )
     
-    public List<License> getLicensesByOrg(String organizationId) {
-        randomlyRunLong();
-//        return licenseRepository.findByOrganizationId(organizationId);
-        return null;
-    }
+    
 
     private List<License> buildFallbackLicenseList(String organizationId){
         List<License> fallbackList = new ArrayList<>();
@@ -97,10 +102,7 @@ public class LicenseService {
         return fallbackList;
     }
 
-    public void saveLicense(License license){
-        license.withId(UUID.randomUUID().toString());
-//        licenseRepository.save(license);
-    }
+   
 
     public void updateLicense(License license){
 //    	licenseRepository.save(license);
