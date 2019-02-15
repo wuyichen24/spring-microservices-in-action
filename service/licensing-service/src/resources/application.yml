@@ -30,3 +30,10 @@
 #     com.netflix: WARN
 #     org.springframework.web: WARN
 #     com.thoughtmechanix: DEBUG
+
+spring:
+  data:
+    jpa:
+      repositories:
+         enabled: true
+

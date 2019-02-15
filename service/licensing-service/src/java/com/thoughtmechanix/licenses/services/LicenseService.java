@@ -27,7 +27,7 @@ import java.util.UUID;
 @Service
 public class LicenseService {
     @Autowired
-    private LicenseRepository licenseRepository;          // Autowired by com.thoughtmechanix.licenses.repository.LicenseRepositoryImpl
+    private LicenseRepository licenseRepository;
 
     @Autowired
     ServiceConfig config;

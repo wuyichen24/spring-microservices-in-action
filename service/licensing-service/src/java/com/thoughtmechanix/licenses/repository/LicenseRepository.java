@@ -1,10 +1,13 @@
 package com.thoughtmechanix.licenses.repository;
 
 import com.thoughtmechanix.licenses.model.License;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 /**
  * The interface for customizing queries to license table
@@ -15,7 +18,7 @@ import java.util.List;
  * @since   1.0
  */
 @Repository
-public interface LicenseRepository extends CrudRepository<License,String>  {
+public interface LicenseRepository extends CrudRepository<License, String>  {
 	/**
 	 * Find a list of {@code License} records based on organization Id.
 	 * 

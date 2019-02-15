@@ -23,12 +23,15 @@ import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-@RefreshScope
+//@RefreshScope
 //@EnableEurekaClient
 //@EnableCircuitBreaker
 //@EnableBinding(Sink.class)
 //@EnableResourceServer
+
+@SpringBootApplication(scanBasePackages= {"com.thoughtmechanix.licenses"})
+@EntityScan(basePackages = {"com.thoughtmechanix.licenses.model"})
+@EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
 public class Application {
 //    @Autowired
 //    private ServiceConfig serviceConfig;
