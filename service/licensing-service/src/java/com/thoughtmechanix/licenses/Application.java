@@ -29,8 +29,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EnableCircuitBreaker
 //@EnableBinding(Sink.class)
 //@EnableResourceServer
-@ComponentScan({"com.thoughtmechanix.licenses.services"})
-@EntityScan("com.thoughtmechanix.licenses.model")
 public class Application {
 //    @Autowired
 //    private ServiceConfig serviceConfig;

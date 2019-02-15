@@ -27,7 +27,7 @@ import java.util.UUID;
 @Service
 public class LicenseService {
     @Autowired
-    private LicenseRepository licenseRepository;
+    private LicenseRepository licenseRepository;          // Autowired by com.thoughtmechanix.licenses.repository.LicenseRepositoryImpl
 
     @Autowired
     ServiceConfig config;
@@ -37,7 +37,7 @@ public class LicenseService {
 
     public License getLicense(String organizationId,String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
-    	return license.withComment(config.getExampleProperty());
+        return license.withComment(config.getExampleProperty());
     }
     
     public List<License> getLicensesByOrg(String organizationId) {
