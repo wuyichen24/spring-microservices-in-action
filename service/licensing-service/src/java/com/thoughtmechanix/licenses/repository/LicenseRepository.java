@@ -7,10 +7,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 /**
  * The interface for customizing queries to license table
+ * 
+ * <p>This interface is extending {@code CrudRepository}, so you MUST NOT 
+ * implement the methods in this interface. The Spring JPA repository will 
+ * automatically implement the basic functions (save, delete, findOne, etc.) 
+ * in the parent {@code CrudRepository} interface and also implements your 
+ * customized query functions defined in this interface based on the method 
+ * names.
+ * 
+ * @see <a href="http://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods.query-creation">QueryCreation</a>
  * 
  * @author  Wuyi Chen
  * @date    02/14/2019
