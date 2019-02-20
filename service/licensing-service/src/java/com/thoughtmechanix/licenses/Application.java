@@ -29,7 +29,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EnableBinding(Sink.class)
 //@EnableResourceServer
 
-@SpringBootApplication(scanBasePackages= {"com.thoughtmechanix.licenses"})
+@SpringBootApplication
 @EntityScan(basePackages = {"com.thoughtmechanix.licenses.entity"})
 @EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
 public class Application {
