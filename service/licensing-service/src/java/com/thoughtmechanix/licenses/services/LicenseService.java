@@ -4,8 +4,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
-import com.thoughtmechanix.licenses.model.License;
-import com.thoughtmechanix.licenses.model.Organization;
+import com.thoughtmechanix.licenses.entity.License;
+import com.thoughtmechanix.licenses.entity.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

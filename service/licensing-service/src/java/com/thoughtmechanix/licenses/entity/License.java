@@ -1,4 +1,4 @@
-package com.thoughtmechanix.licenses.model;
+package com.thoughtmechanix.licenses.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * The model class for license
+ * The entity class for license
  * 
  * @author  Wuyi Chen
  * @date    02/14/2019
