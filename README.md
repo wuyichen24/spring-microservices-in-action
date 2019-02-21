@@ -9,4 +9,4 @@ This source code was re-organized by the [original source code](https://www.mann
 
 There are the differences between this source code and the original source code:
 * Use Gradle as Java build automation tool rather than Maven.
-* Use MySQL as database in the licensing service rather than PostgreSQL.
+* Use MySQL as database rather than PostgreSQL in the licensing service.
