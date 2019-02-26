@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.repository;
 
-import com.thoughtmechanix.licenses.model.Organization;
+import com.thoughtmechanix.licenses.entity.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.core.HashOperations;
 //import org.springframework.data.redis.core.RedisTemplate;

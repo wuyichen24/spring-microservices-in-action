@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.controllers;
 
-import com.thoughtmechanix.licenses.model.License;
+import com.thoughtmechanix.licenses.entity.License;
 import com.thoughtmechanix.licenses.services.LicenseService;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
 import org.slf4j.Logger;

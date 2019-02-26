@@ -1,4 +1,4 @@
-package com.thoughtmechanix.licenses.model;
+package com.thoughtmechanix.licenses.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

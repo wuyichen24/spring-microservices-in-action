@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.clients;
 
-import com.thoughtmechanix.licenses.model.Organization;
+import com.thoughtmechanix.licenses.entity.Organization;
 import com.thoughtmechanix.licenses.repository.OrganizationRedisRepository;
 import com.thoughtmechanix.licenses.utils.UserContext;
 import org.slf4j.Logger;

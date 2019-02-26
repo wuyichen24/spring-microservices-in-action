@@ -1,4 +1,4 @@
-package com.thoughtmechanix.licenses.model;
+package com.thoughtmechanix.licenses.entity;
 
 import java.io.Serializable;
 

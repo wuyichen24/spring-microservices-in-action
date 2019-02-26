@@ -30,8 +30,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EnableResourceServer
 
 @SpringBootApplication(scanBasePackages= {"com.thoughtmechanix.licenses"})
-@EntityScan(basePackages = {"com.thoughtmechanix.licenses.model"})
+@EntityScan(basePackages = {"com.thoughtmechanix.licenses.entity"})
 @EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
+@RefreshScope
 public class Application {
 //    @Autowired
 //    private ServiceConfig serviceConfig;
