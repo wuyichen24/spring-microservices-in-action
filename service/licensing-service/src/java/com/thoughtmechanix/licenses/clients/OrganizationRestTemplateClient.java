@@ -3,6 +3,7 @@ package com.thoughtmechanix.licenses.clients;
 import com.thoughtmechanix.licenses.entity.Organization;
 import com.thoughtmechanix.licenses.repository.OrganizationRedisRepository;
 import com.thoughtmechanix.licenses.utils.UserContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

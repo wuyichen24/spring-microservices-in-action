@@ -29,13 +29,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@EnableBinding(Sink.class)
 //@EnableResourceServer
 
-@SpringBootApplication(scanBasePackages= {"com.thoughtmechanix.licenses"})
+@SpringBootApplication
 @EntityScan(basePackages = {"com.thoughtmechanix.licenses.entity"})
 @EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
 @RefreshScope
 public class Application {
-//    @Autowired
-//    private ServiceConfig serviceConfig;
+    @Autowired
+    private ServiceConfig serviceConfig;
 //
 //    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 //
