@@ -17,11 +17,12 @@
 server:
   port: 8888
 spring:
- profiles:
-   active: native
- cloud:
+  profiles:
+    active: native
+  cloud:
     config:
       server:
+          encrypt.enabled: false
           native:
 #            Use absolute path
 #             searchLocations: file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/licensingservice,
