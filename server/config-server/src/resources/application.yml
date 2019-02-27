@@ -22,13 +22,12 @@ spring:
   cloud:
     config:
       server:
-          encrypt.enabled: false
-          native:
+        native:
 #            Use absolute path
 #             searchLocations: file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/licensingservice,
 #                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/organizationservice
 #            Use relative path with classpath
-             searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice
+          searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice
 
 ####################################
 # 2nd way: load from a git repository
