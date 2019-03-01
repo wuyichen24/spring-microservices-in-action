@@ -5,4 +5,3 @@ spring:
     config:
       server:
         encrypt.enabled: false
-
