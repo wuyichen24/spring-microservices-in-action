@@ -1,14 +1,14 @@
-spring:
-  cloud:
-    stream:
-      bindings:
-        output:
-            destination:  orgChangeTopic
-            content-type: application/json
-        kafka:
-          binder:
-            zkNodes: localhost
-            brokers: localhost
+# spring:
+#   cloud:
+#     stream:
+#       bindings:
+#         output:
+#             destination:  orgChangeTopic
+#             content-type: application/json
+#         kafka:
+#           binder:
+#             zkNodes: localhost
+#             brokers: localhost
 
 #Setting the logging levels for the service
 logging:

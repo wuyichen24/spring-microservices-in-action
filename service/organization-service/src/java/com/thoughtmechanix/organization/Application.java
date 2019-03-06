@@ -14,15 +14,15 @@ import javax.servlet.Filter;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 //@EnableBinding(Source.class)
 //@EnableResourceServer
 public class Application {
-    @Bean
-    public Filter userContextFilter() {
-        UserContextFilter userContextFilter = new UserContextFilter();
-        return userContextFilter;
-    }
+//    @Bean
+//    public Filter userContextFilter() {
+//        UserContextFilter userContextFilter = new UserContextFilter();
+//        return userContextFilter;
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
