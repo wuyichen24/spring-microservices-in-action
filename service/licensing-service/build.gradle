@@ -3,7 +3,7 @@ dependencies {
     compile group: 'org.springframework.boot',           name: 'spring-boot-starter-web',           version: '1.4.4.RELEASE'
     compile group: 'org.springframework.boot',           name: 'spring-boot-starter-actuator',      version: '1.4.4.RELEASE'
     
-	compile group: 'org.springframework.boot',           name: 'spring-boot-starter-data-jpa'                                 // Java Persistence API (JPA)
+	compile group: 'org.springframework.boot',           name: 'spring-boot-starter-data-jpa',      version: '1.5.19.RELEASE'                             // Java Persistence API (JPA)
 //	compile group: 'org.springframework.cloud',          name: 'spring-cloud-starter-eureka',       version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud',          name: 'spring-cloud-starter-feign',        version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud',          name: 'spring-cloud-starter-config',       version: '1.4.4.RELEASE'

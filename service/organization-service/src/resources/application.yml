@@ -10,6 +10,10 @@
 #             zkNodes: localhost
 #             brokers: localhost
 
+# The port of organization service (make it different with licensing service)
+server:
+  port: 8060
+
 #Setting the logging levels for the service
 logging:
   level:
@@ -20,10 +24,10 @@ logging:
 
 eureka:
   instance:
-    preferIpAddress: true
+    preferIpAddress: true                           # Register the IP of the service rather than the server name
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: true                        # Register the service with Eureka
+    fetchRegistry: true                             # Pull down a local copy of the registry
     serviceUrl:
         defaultZone: http://localhost:8761/eureka/
 
