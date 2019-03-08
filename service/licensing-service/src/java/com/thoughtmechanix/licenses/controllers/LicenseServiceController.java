@@ -1,8 +1,8 @@
 package com.thoughtmechanix.licenses.controllers;
 
+import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.services.LicenseService;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
-import com.thoughtmechanix.licenses.entity.License;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
 
 
 //import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,11 @@ public class LicenseServiceController {
     public License getLicenses(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) {
 //        logger.debug("Found tmx-correlation-id in license-service-controller: {} ", request.getHeader("tmx-correlation-id"));
         return licenseService.getLicense(organizationId, licenseId);
+    }
+    
+    @RequestMapping(value="/{licenseId}/{clientType}", method = RequestMethod.GET)
+    public License getLicensesWithClient(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId, @PathVariable("clientType") String clientType) {
+    	return licenseService.getLicense(organizationId, licenseId, clientType);
     }
 
     @RequestMapping(value = "{licenseId}", method = RequestMethod.PUT)

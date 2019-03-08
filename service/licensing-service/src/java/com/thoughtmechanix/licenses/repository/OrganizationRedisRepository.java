@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.repository;
 
-import com.thoughtmechanix.licenses.entity.Organization;
+import com.thoughtmechanix.licenses.model.Organization;
 
 public interface OrganizationRedisRepository {
     void saveOrganization(Organization org);

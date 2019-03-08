@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.repository;
 
-import com.thoughtmechanix.licenses.entity.License;
+import com.thoughtmechanix.licenses.model.License;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

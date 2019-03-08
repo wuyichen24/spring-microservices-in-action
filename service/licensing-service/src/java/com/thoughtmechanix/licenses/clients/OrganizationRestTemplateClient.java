@@ -1,6 +1,6 @@
 package com.thoughtmechanix.licenses.clients;
 
-import com.thoughtmechanix.licenses.entity.Organization;
+import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.OrganizationRedisRepository;
 import com.thoughtmechanix.licenses.utils.UserContext;
 
@@ -10,17 +10,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 //import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
+/**
+ * The client for invoking the organization service by Ribbon-backed Spring RestTemplate
+ *
+ * @author  Wuyi Chen
+ * @date    03/07/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Component
 public class OrganizationRestTemplateClient {
+	private static final Logger logger = LoggerFactory.getLogger(OrganizationRestTemplateClient.class);
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	public Organization getOrganization(String organizationId) {
+		ResponseEntity<Organization> restExchange = restTemplate.exchange(
+				"http://organizationservice/v1/organizations/{organizationId}",    // The IP address of the instance you call is abstracted
+				HttpMethod.GET,
+				null, 
+				Organization.class, 
+				organizationId);
+		
+		return restExchange.getBody();
+	}
+	
 //    @Autowired
 //    OAuth2RestTemplate restTemplate;
 
 //    @Autowired
 //    OrganizationRedisRepository orgRedisRepo;
-
-    private static final Logger logger = LoggerFactory.getLogger(OrganizationRestTemplateClient.class);
 
 //    private Organization checkRedisCache(String organizationId) {
 //        try {
@@ -39,7 +62,7 @@ public class OrganizationRestTemplateClient {
 //        }
 //    }
 
-    public Organization getOrganization(String organizationId){
+//    public Organization getOrganization(String organizationId){
 //        logger.debug("In Licensing Service.getOrganization: {}", UserContext.getCorrelationId());
 //
 //        Organization org = checkRedisCache(organizationId);
@@ -64,8 +87,6 @@ public class OrganizationRestTemplateClient {
 //        }
 //
 //        return org;
-    		return null;
-    }
-
-
+//    		return null;
+//    }
 }
