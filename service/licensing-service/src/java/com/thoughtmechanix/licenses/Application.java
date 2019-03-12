@@ -36,8 +36,9 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EntityScan(basePackages = {"com.thoughtmechanix.licenses.model"})
 @EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
-@EnableDiscoveryClient       // Enable Spring DiscoveryClient (call services registered with service discovery engine )
-@EnableFeignClients          // Enable Netflix Feign (call services registered with service discovery engine )
+@EnableDiscoveryClient       // Enable Spring DiscoveryClient (call services registered with service discovery engine)
+@EnableFeignClients          // Enable Netflix Feign (call services registered with service discovery engine)
+@EnableCircuitBreaker        // Enable Hystrix
 @RefreshScope
 public class Application {
     @Autowired

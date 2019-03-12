@@ -60,9 +60,15 @@ public class LicenseService {
     		.withContactPhone( org.getContactPhone() )
     		.withComment(config.getExampleProperty());
     }
-    
+       
+    @HystrixCommand (fallbackMethod = "buildFallbackLicenseList",           // if this function excess the timeout, it will trigger the fallback function
+            threadPoolKey = "licenseByOrgThreadPool",                       // define the unique name of the new thread pool
+            threadPoolProperties =
+                    { @HystrixProperty(name = "coreSize",value="30"),       // the size of the new thread pool
+                      @HystrixProperty(name="maxQueueSize", value="10")}    // the size of the queue in front of the thread pool 
+    )                                                                       // to hold the requests when the thread pool is full
     public List<License> getLicensesByOrg(String organizationId) {
-//        randomlyRunLong();
+        randomlyRunLong();     // this function just simulate the long running randomly to trigger the time out exception from circuit breaker
         return licenseRepository.findByOrganizationId(organizationId);
     }
     
@@ -84,7 +90,6 @@ public class LicenseService {
                      @HystrixProperty(name="metrics.rollingStats.timeInMilliseconds", value="15000"),
                      @HystrixProperty(name="metrics.rollingStats.numBuckets", value="5")}
     )
-    
     public void updateLicense(License license){
 //    	licenseRepository.save(license);
     }
@@ -99,16 +104,27 @@ public class LicenseService {
     		return null;
     }
 
-    private void randomlyRunLong(){
-    	Random rand = new Random();
+    /**
+     * Simulate the long running randomly.
+     * 
+     * <p>This method is to simulate the long running on approximately every 
+     * one in three calls. The long running will take a little over a second, 
+     * and it will be longer than the default time out of the circuit breaker, 
+     * so that the circuit breaker will be triggered.
+     */
+    private void randomlyRunLong() {
+    		Random rand = new Random();
 
-    	int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+    		int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
-    	if (randomNum==3) {
-    		sleep();
-    	}
+    		if (randomNum == 3) {
+    			sleep();
+    		}
     }
 
+    /**
+     * Sleep 2 seconds.
+     */
     private void sleep(){
         try {
             Thread.sleep(2000);
@@ -154,6 +170,16 @@ public class LicenseService {
         return organization;
     }
     
+    /**
+     * Build a fallback license list.
+     * 
+     * <p>This is the fallback function and it will be triggered if there is 
+     * an error occurred when getting the license list. This is an alternative 
+     * solution by returning a hard-coded value.
+     * 
+     * @param organizationId
+     * @return
+     */
     private List<License> buildFallbackLicenseList(String organizationId){
         List<License> fallbackList = new ArrayList<>();
         License license = new License()

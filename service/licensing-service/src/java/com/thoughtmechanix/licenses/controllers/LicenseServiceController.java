@@ -26,8 +26,8 @@ public class LicenseServiceController {
     @Autowired
     private LicenseService licenseService;
 
-    @Autowired
-    private ServiceConfig serviceConfig;
+//    @Autowired
+//    private ServiceConfig serviceConfig;
 
 //    @Autowired
 //    private HttpServletRequest request;
