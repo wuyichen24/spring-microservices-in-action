@@ -1,5 +1,7 @@
 package com.thoughtmechanix.licenses.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
@@ -11,16 +13,41 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * The filter class to get some contextual information from the HTTP header of 
+ * the REST call.
+ * 
+ * <p>This solution is the way to propagate the parameters in the HTTP header 
+ * of the REST call to any downstream service calls.
+ * 
+ * <p>This class will get following parameters from the HTTP header of the 
+ * incoming REST call:
+ * <ul>
+ *   <li>CORRELATION_ID (tmx-correlation-id)
+ *   <li>AUTH_TOKEN     (tmx-auth-token)
+ *   <li>USER_ID        (tmx-user-id)
+ *   <li>ORG_ID         (tmx-org-id)
+ * </ul>
+ *
+ * @author  Wuyi Chen
+ * @date    03/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Component
 public class UserContextFilter implements Filter {
+    private static final Logger logger = LoggerFactory.getLogger(UserContextFilter.class);
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-        UserContext.setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));
-        UserContext.setUserId(httpServletRequest.getHeader(UserContext.USER_ID));
-        UserContext.setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
-        UserContext.setOrgId( httpServletRequest.getHeader(UserContext.ORG_ID));
+        UserContextHolder.getContext().setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));
+        UserContextHolder.getContext().setUserId(httpServletRequest.getHeader(UserContext.USER_ID));
+        UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
+        UserContextHolder.getContext().setOrgId(httpServletRequest.getHeader(UserContext.ORG_ID));
+
+        logger.debug("UserContextFilter Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
