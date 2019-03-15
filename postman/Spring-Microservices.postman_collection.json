@@ -1,17 +1,15 @@
 {
 	"info": {
-		"_postman_id": "739dbd1b-96cb-430c-aa3a-6e32958b0439",
+		"_postman_id": "64dde0fc-8d37-4350-ab90-7386575a380d",
 		"name": "Spring-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "ConfigServer",
-			"description": null,
 			"item": [
 				{
 					"name": "Basic",
-					"description": null,
 					"item": [
 						{
 							"name": "Get_Metrics_From_Config_Server",
@@ -65,7 +63,6 @@
 				},
 				{
 					"name": "Config",
-					"description": null,
 					"item": [
 						{
 							"name": "Get_Licensing_Service_Config_From_Config_Server (Default)",
@@ -144,45 +141,14 @@
 						}
 					],
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Encryption",
-					"description": "",
-					"item": [
-						{
-							"name": "Get_Encrypted_Value",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "6ytow2-;S3lA"
-								},
-								"url": {
-									"raw": "http://localhost:8888/encrypt",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"encrypt"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
 				}
 			]
 		},
 		{
 			"name": "LicensingService",
-			"description": null,
 			"item": [
 				{
-					"name": "http://localhost:8080/env",
+					"name": "Check_Licensing_Service_Can_Get_Config_From_Config_Server",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -202,6 +168,60 @@
 							]
 						},
 						"description": "Check licensing service can get the configuration parameters from config server or not"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EurekaServer",
+			"item": [
+				{
+					"name": "Get_Detailed_Info_Of_Organization__Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps/ORGANIZATIONSERVICE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps",
+								"ORGANIZATIONSERVICE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Detailed_Info_Of_All_Registered_Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
 					},
 					"response": []
 				}
