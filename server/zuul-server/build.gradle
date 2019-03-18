@@ -1,9 +1,9 @@
 dependencies {
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zuul', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zuul',   version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka', version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '1.4.4.RELEASE'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-config-client', version: '1.4.4.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-config-client',  version: '1.4.4.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '1.3.5.RELEASE'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin', version: '1.3.5.RELEASE'
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin',  version: '1.3.5.RELEASE'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient',                  version: '4.5.2'
 }

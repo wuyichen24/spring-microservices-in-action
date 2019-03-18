@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableZuulProxy
+@EnableZuulProxy                    // Enables the service to be a Zuul server
 public class ZuulServerApplication {
     @LoadBalanced
     @Bean
