@@ -11,29 +11,34 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * The configuration class to let Spring Cloud use your customized Hystrix 
+ * concurrency strategy ({@code ThreadLocalAwareStrategy}).
+ * 
+ * @author  Wuyi Chen
+ * @date    03/17/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Configuration
 public class ThreadLocalConfiguration {
-        @Autowired(required = false)
-        private HystrixConcurrencyStrategy existingConcurrencyStrategy;
+	@Autowired(required = false)
+	private HystrixConcurrencyStrategy existingConcurrencyStrategy;     // Autowire the existing HystrixConcurrencyStrategy
 
-        @PostConstruct
-        public void init() {
-            // Keeps references of existing Hystrix plugins.
-            HystrixEventNotifier eventNotifier = HystrixPlugins.getInstance()
-                    .getEventNotifier();
-            HystrixMetricsPublisher metricsPublisher = HystrixPlugins.getInstance()
-                    .getMetricsPublisher();
-            HystrixPropertiesStrategy propertiesStrategy = HystrixPlugins.getInstance()
-                    .getPropertiesStrategy();
-            HystrixCommandExecutionHook commandExecutionHook = HystrixPlugins.getInstance()
-                    .getCommandExecutionHook();
+	@PostConstruct
+	public void init() {
+		// Keeps references of existing Hystrix plugins.
+		HystrixEventNotifier        eventNotifier        = HystrixPlugins.getInstance().getEventNotifier();
+        HystrixMetricsPublisher     metricsPublisher     = HystrixPlugins.getInstance().getMetricsPublisher();
+        HystrixPropertiesStrategy   propertiesStrategy   = HystrixPlugins.getInstance().getPropertiesStrategy();
+        HystrixCommandExecutionHook commandExecutionHook = HystrixPlugins.getInstance().getCommandExecutionHook();
 
-            HystrixPlugins.reset();
+        HystrixPlugins.reset();
 
-            HystrixPlugins.getInstance().registerConcurrencyStrategy(new ThreadLocalAwareStrategy(existingConcurrencyStrategy));
-            HystrixPlugins.getInstance().registerEventNotifier(eventNotifier);
-            HystrixPlugins.getInstance().registerMetricsPublisher(metricsPublisher);
-            HystrixPlugins.getInstance().registerPropertiesStrategy(propertiesStrategy);
-            HystrixPlugins.getInstance().registerCommandExecutionHook(commandExecutionHook);
-        }
+        HystrixPlugins.getInstance().registerConcurrencyStrategy(new ThreadLocalAwareStrategy(existingConcurrencyStrategy));  // Register your customized strategy ({@code ThreadLocalAwareStrategy})
+        HystrixPlugins.getInstance().registerEventNotifier(eventNotifier);
+        HystrixPlugins.getInstance().registerMetricsPublisher(metricsPublisher);
+        HystrixPlugins.getInstance().registerPropertiesStrategy(propertiesStrategy);
+        HystrixPlugins.getInstance().registerCommandExecutionHook(commandExecutionHook);
+	}
 }
