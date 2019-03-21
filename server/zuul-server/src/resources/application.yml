@@ -13,7 +13,7 @@ spring:
 server:
   port: 5555
 
-#S etting logging levels
+# Letting logging levels
 logging:
     level:
       com.netflix: WARN
@@ -23,20 +23,17 @@ logging:
 # Let Zuul server talk to Eureka server
 eureka:
   instance:
-    preferIpAddress: true
+    preferIpAddress: true                           # Register the IP of the service rather than the server name
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: true                        # Register the service with Eureka
+    fetchRegistry: true                             # Pull down a local copy of the registry
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
 
-#
-#
-#  debug:
-#    request: true
-#
-#zuul:
-#  prefix:  /api
-#  routes:
-#    organizationservice: /organization/**
-#    licensingservice: /licensing/**
+# Zuul configuration
+zuul:
+  # ignored-services: '*'                           # Exclude all the auto-generated routes between the Eureka service IDs and the registered services
+  # prefix:  /api                                   # Add the prefix in all the service calls, like "/organization/**" =>> "/api/organization/**"
+  routes:
+    organizationservice: /organization/**           # Customize the route to organization service ("/organizationservice/**" =>> "/organization/**"")
+    licensingservice: /licensing/**                 # Customize the route to licensing service    ("/licensingservice/**"    =>> "/licensing/**"    )

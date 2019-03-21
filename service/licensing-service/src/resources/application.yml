@@ -22,7 +22,7 @@ eureka:
     registerWithEureka: true                        # Register the service with Eureka
     fetchRegistry: true                             # Pull down a local copy of the registry
     serviceUrl:
-        defaultZone: http://localhost:8761/eureka/  # Location of the Eureka Service
+      defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
 
 # #Setting logging levels
 # logging:
