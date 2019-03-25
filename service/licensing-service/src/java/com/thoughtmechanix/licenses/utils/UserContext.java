@@ -3,6 +3,8 @@ package com.thoughtmechanix.licenses.utils;
 import org.springframework.stereotype.Component;
 
 /**
+ * The class to hold the HTTP header values.
+ * 
  * @author  Wuyi Chen
  * @date    03/14/2019
  * @version 1.0

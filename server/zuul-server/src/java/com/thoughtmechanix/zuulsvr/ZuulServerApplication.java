@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableZuulProxy                    // Enables the service to be a Zuul server
+@EnableZuulProxy                           // Enables the service to be a Zuul server
 public class ZuulServerApplication {
-    @LoadBalanced
+    @LoadBalanced                          // This annotation tells Spring Cloud to create a Ribbon backed RestTemplate class.
     @Bean
     public RestTemplate getRestTemplate(){
         return new RestTemplate();

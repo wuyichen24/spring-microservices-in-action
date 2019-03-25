@@ -20,6 +20,13 @@ import java.io.IOException;
  * <p>This solution is the way to propagate the parameters in the HTTP header 
  * of the REST call to any downstream service calls.
  * 
+ * <p>The basic logic is the {@code UserContextFilter} will get several 
+ * parameters from the incoming HTTP header and store them into the 
+ * {@code UserContext} object of the {@code UserContextHolder}. 
+ * The {@code UserContextInterceptor} will inject the parameters from the 
+ * {@code UserContextHolder} into the header of the outgoing service requests 
+ * toward downstream services.
+ * 
  * <p>This class will get following parameters from the HTTP header of the 
  * incoming REST call:
  * <ul>
