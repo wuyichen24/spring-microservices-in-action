@@ -1,17 +1,15 @@
 {
 	"info": {
-		"_postman_id": "987d74a4-ac5c-47b6-8ac4-a2b1db894d6b",
+		"_postman_id": "2929368a-6cbc-497f-9bf6-5a28a7112fc7",
 		"name": "Spring-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "ConfigServer",
-			"description": null,
 			"item": [
 				{
 					"name": "Basic",
-					"description": null,
 					"item": [
 						{
 							"name": "Get_Metrics_From_Config_Server",
@@ -65,7 +63,6 @@
 				},
 				{
 					"name": "Config",
-					"description": null,
 					"item": [
 						{
 							"name": "Get_Licensing_Service_Config_From_Config_Server (Default)",
@@ -149,7 +146,6 @@
 		},
 		{
 			"name": "LicensingService",
-			"description": null,
 			"item": [
 				{
 					"name": "Check_Licensing_Service_Can_Get_Config_From_Config_Server",
@@ -174,12 +170,66 @@
 						"description": "Check licensing service can get the configuration parameters from config server or not"
 					},
 					"response": []
+				},
+				{
+					"name": "Get_Licenses_By_Organization_Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Licenses_By_Organization_Id (Through Zuul Gateway)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"licensingservice",
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "EurekaServer",
-			"description": null,
 			"item": [
 				{
 					"name": "Get_Detailed_Info_Of_Organization__Service",
@@ -234,14 +284,16 @@
 		},
 		{
 			"name": "ZuulServer",
-			"description": "",
 			"item": [
 				{
 					"name": "Get_All_Mapped_Routes",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5555/routes",
 							"protocol": "http",
