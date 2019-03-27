@@ -37,21 +37,21 @@ public class TrackingFilter extends ZuulFilter{
 
     @Override
     public String filterType() {
-        return FilterUtils.PRE_FILTER_TYPE;     // Type: Define the filter type is pre-filter
+        return FilterUtils.PRE_FILTER_TYPE;      // Type: Define the filter type is pre-filter
     }
 
     @Override
-    public int filterOrder() {                  // Execution Order: Define the order of execution across multiple Filters
+    public int filterOrder() {                   // Execution Order: Define the order of execution across multiple Filters
         return FILTER_ORDER;
     }
 
     @Override
     public boolean shouldFilter() {
-        return SHOULD_FILTER;                   // Criteria: Define the filter will be invoked or not
+        return SHOULD_FILTER;                    // Criteria: Define the filter will be invoked or not
     }
 
     @Override
-    public Object run() {                       // Action: The action to be executed if the Criteria is met
+    public Object run() {                        // Action: The action to be executed if the Criteria is met
         if (isCorrelationIdPresent()) {
            logger.debug("tmx-correlation-id found in tracking filter: {}. ", filterUtils.getCorrelationId());
         } else{
