@@ -64,7 +64,7 @@ import java.util.Random;
 @Component
 public class SpecialRoutesFilter extends ZuulFilter {
     private static final int     FILTER_ORDER  = 1;
-    private static final boolean SHOULD_FILTER = true;
+    private static final boolean SHOULD_FILTER = false;
     private static final Logger  logger        = LoggerFactory.getLogger(SpecialRoutesFilter.class);
     
     private ProxyRequestHelper helper = new ProxyRequestHelper();
@@ -242,6 +242,18 @@ public class SpecialRoutesFilter extends ZuulFilter {
         return new HttpHost(url.getHost(), url.getPort(), url.getProtocol());
     }
     
+    /**
+     * Copy the existing HTTP request ({@code HttpServletRequest}) to a new 
+     * HTTP request ({@code HttpRequest}).
+     * 
+     * @param  oldRequest
+     *         The old HTTP request ({@code HttpServletRequest} object)
+     * 
+     * @param  uri
+     *         The URI string.
+     *         
+     * @return  The new HTTP request ({@code HttpRequest} object)
+     */
     private HttpRequest copyHttpRequest(HttpServletRequest oldRequest, String uri) {
     	// Copy the headers, URL parameters, method and body of the original HTTP request
     	MultiValueMap<String, String> headers = this.helper.buildZuulRequestHeaders(oldRequest);
@@ -307,6 +319,52 @@ public class SpecialRoutesFilter extends ZuulFilter {
         return requestEntity;
     }
 
+    /**
+     * Send a HTTP request to an endpoint.
+     * 
+     * @param  httpclient
+     *         The {@code HttpClient} object.
+     *         
+     * @param  httpHost
+     *         The {@code HttpHost} object representing the endpoint.
+     * 
+     * @param  httpRequest
+     *         The {@code HttpRequest} object needs to be sent.
+     * 
+     * @return  The response of the request.
+     * 
+     * @throws  IOException
+     *          If there is an error occurred when sending the request.
+     */
+    private HttpResponse forwardRequest(HttpClient httpclient, HttpHost httpHost, HttpRequest httpRequest) throws IOException {
+        return httpclient.execute(httpHost, httpRequest);
+    }
+
+    /**
+     * Set the response of Zuul server by the pieces of the response from 
+     * the downstream service.
+     * 
+     * @param  response
+     *         The response from the downstream service.
+     *         
+     * @throws  IOException
+     *          If there is an error occurred when setting the response for 
+     *          the Zuul server.
+     */
+    private void setResponse(HttpResponse response) throws IOException {
+        this.helper.setResponse(response.getStatusLine().getStatusCode(), response.getEntity() == null ? 
+        		null : response.getEntity().getContent(), revertHeaders(response.getAllHeaders()));
+    }
+    
+    /**
+     * Convert a {@code MultiValueMap} object to an array of 
+     * the {@code Header} objects for the HTTP headers.
+     * 
+     * @param  headers
+     *         The {@code MultiValueMap} object for the headers.
+     * 
+     * @return  The array of {@code Header} objects.
+     */
     private Header[] convertHeaders(MultiValueMap<String, String> headers) {
         List<Header> list = new ArrayList<>();
         for (String name : headers.keySet()) {
@@ -317,16 +375,18 @@ public class SpecialRoutesFilter extends ZuulFilter {
         return list.toArray(new BasicHeader[0]);
     }
 
-    private HttpResponse forwardRequest(HttpClient httpclient, HttpHost httpHost, HttpRequest httpRequest) throws IOException {
-        return httpclient.execute(httpHost, httpRequest);
-    }
-
-    private void setResponse(HttpResponse response) throws IOException {
-        this.helper.setResponse(response.getStatusLine().getStatusCode(),
-                response.getEntity() == null ? null : response.getEntity().getContent(),
-                revertHeaders(response.getAllHeaders()));
-    }
-
+    /**
+     * Convert an array of the {@code Header} objects to 
+     * a {@code MultiValueMap} object for the HTTP header.
+     * 
+     * <p>This is a opposite operation for 
+     * the {@link #convertHeaders(headers)} method.
+     * 
+     * @param  headers
+     *         The array of the {@code Header} objects.
+     * 
+     * @return  The {@code MultiValueMap} object representing the headers.
+     */
     private MultiValueMap<String, String> revertHeaders(Header[] headers) {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
         for (Header header : headers) {
