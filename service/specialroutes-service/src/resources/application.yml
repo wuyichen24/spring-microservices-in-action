@@ -1,3 +1,6 @@
+# The port of specialroute service (make it different with licensing service)
+server:
+  port: 8040
 
 #Setting the logging levels for the service
 logging:
