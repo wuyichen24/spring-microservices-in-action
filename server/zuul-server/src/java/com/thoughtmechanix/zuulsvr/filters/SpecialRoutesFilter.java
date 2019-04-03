@@ -82,16 +82,16 @@ public class SpecialRoutesFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return FILTER_ORDER;
+        return FILTER_ORDER;                     // Execution Order: Define the order of execution across multiple Filters
     }
 
     @Override
-    public boolean shouldFilter() {
+    public boolean shouldFilter() {              // Criteria: Define the filter will be invoked or not
         return SHOULD_FILTER;
     }
     
     @Override
-    public Object run() {
+    public Object run() {                        // Action: The action to be executed if the Criteria is met
         RequestContext ctx = RequestContext.getCurrentContext();
 
         AbTestingRoute abTestRoute = getAbRoutingInfo(filterUtils.getServiceId());   // Check the SpecialRoutes service to see is there any alternate endpoint for that service ID
