@@ -309,6 +309,72 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "AuthenticationService",
+			"item": [
+				{
+					"name": "Get_Access_Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "thisissecret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "eagleeye",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "webclient",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "john.carnell",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

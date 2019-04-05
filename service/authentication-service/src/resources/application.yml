@@ -16,3 +16,4 @@ eureka:
 
 server:
   contextPath:   /auth
+  port: 8901               # The port of authentication service (make it same with book)

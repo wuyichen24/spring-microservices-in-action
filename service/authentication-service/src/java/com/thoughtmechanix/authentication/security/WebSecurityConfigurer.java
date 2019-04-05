@@ -7,6 +7,15 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+/**
+ * The configuration class to define the authentication information at 
+ * user-level.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/04/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
@@ -26,8 +35,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("john.carnell").password("password1").roles("USER")
+                .withUser("john.carnell").password("password1").roles("USER")                 // Define the first user: john.carnell with the password "password1" and the role "USER"
                 .and()
-                .withUser("william.woodward").password("password2").roles("USER", "ADMIN");
+                .withUser("william.woodward").password("password2").roles("USER", "ADMIN");   // Define the second user: william.woodward with the password "password2" and the role "ADMIN"
     }
 }

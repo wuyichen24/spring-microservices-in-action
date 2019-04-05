@@ -8,9 +8,17 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
+/**
+ * The configuration class to define the authentication information at 
+ * application-level.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/04/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Configuration
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -18,12 +26,12 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient("eagleeye")
-                .secret("thisissecret")
-                .authorizedGrantTypes("refresh_token", "password", "client_credentials")
-                .scopes("webclient", "mobileclient");
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {            // Define what client applications are registered with the service.
+        clients.inMemory()                                                                      // Store the application information in memory
+                .withClient("eagleeye")                                                         // Specify which application will register
+                .secret("thisissecret")                                                         // Specify the secret which will be used to get the access token
+                .authorizedGrantTypes("refresh_token", "password", "client_credentials")        // Provide a list of the authorization grant types that will be supported by the service.
+                .scopes("webclient", "mobileclient");                                           // Define the types of the client applications can get the access token from the service.
     }
 
     @Override
