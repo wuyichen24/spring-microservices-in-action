@@ -27,8 +27,9 @@ spring:
 #             searchLocations: file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/licensingservice,
 #                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/organizationservice
 #                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/specialroutesservice
+#                              file:///Users/wuyichen/Documents/workspace/spring-microservices-in-action/server/config-server/src/resources/config/authenticationservice
 #            Use relative path with classpath
-          searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice,classpath:config/specialroutesservice
+          searchLocations: classpath:config/,classpath:config/licensingservice,classpath:config/organizationservice,classpath:config/specialroutesservice,classpath:config/authenticationservice
 
 ####################################
 # 2nd way: load from a git repository
@@ -42,6 +43,6 @@ spring:
 #         encrypt.enabled: false
 #         git:
 #           uri: https://github.com/carnellj/config-repo/
-#           searchPaths: licensingservice,organizationservice,specialroutesservice
+#           searchPaths: licensingservice,organizationservice,specialroutesservice,authenticationservice
 #           username: native-cloud-apps
 #           password: 0ffended
