@@ -1,4 +1,4 @@
-example.property: "The default configuration"
+example.property: "The prod configuration"
 spring.jpa.database: "MYSQL"
 spring.datasource.platform:  "mysql"
 spring.jpa.show-sql: "true"
