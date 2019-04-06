@@ -145,6 +145,88 @@
 			]
 		},
 		{
+			"name": "EurekaServer",
+			"item": [
+				{
+					"name": "Get_Detailed_Info_Of_Organization__Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps/ORGANIZATIONSERVICE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps",
+								"ORGANIZATIONSERVICE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Detailed_Info_Of_All_Registered_Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ZuulServer",
+			"item": [
+				{
+					"name": "Get_All_Mapped_Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5555/routes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"routes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "LicensingService",
 			"item": [
 				{
@@ -229,88 +311,6 @@
 			]
 		},
 		{
-			"name": "EurekaServer",
-			"item": [
-				{
-					"name": "Get_Detailed_Info_Of_Organization__Service",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8761/eureka/apps/ORGANIZATIONSERVICE",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8761",
-							"path": [
-								"eureka",
-								"apps",
-								"ORGANIZATIONSERVICE"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get_Detailed_Info_Of_All_Registered_Services",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8761/eureka/apps",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8761",
-							"path": [
-								"eureka",
-								"apps"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "ZuulServer",
-			"item": [
-				{
-					"name": "Get_All_Mapped_Routes",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5555/routes",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5555",
-							"path": [
-								"routes"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "AuthenticationService",
 			"item": [
 				{
@@ -369,6 +369,76 @@
 								"auth",
 								"oauth",
 								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve_User_Info",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer dd8de035-6dc7-4d5b-863d-23aa48b38809",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"user"
+							]
+						},
+						"description": "If it return the login page, add the setting into the application.yml of the authentication service.\n\nsecurity.oauth2.resource.filter-order=3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrganizationService",
+			"item": [
+				{
+					"name": "Get_Organization_By_Organzation_Id (With access token)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7a5d22dc-a9fc-42ee-bed6-6ca87cf7fb6c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8060/v1/organizations/442adb6e-fa58-47f3-9ca2-ed1fecdfe86c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8060",
+							"path": [
+								"v1",
+								"organizations",
+								"442adb6e-fa58-47f3-9ca2-ed1fecdfe86c"
 							]
 						}
 					},
