@@ -30,5 +30,10 @@ eureka:
     fetchRegistry: true                             # Pull down a local copy of the registry
     serviceUrl:
         defaultZone: http://localhost:8761/eureka/
+        
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/auth/user
 
         

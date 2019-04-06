@@ -17,3 +17,10 @@ eureka:
 server:
   contextPath:   /auth
   port: 8901               # The port of authentication service (make it same with book)
+  
+# Avoid "http://localhost:8901/auth/user" to return the login page rather than user info
+# https://stackoverflow.com/questions/43308625/spring-security-oauth2-always-redirects-to-login-page-having-a-valid-bearer-hea
+security:
+  oauth2: 
+    resource:
+      filter-order: 3
