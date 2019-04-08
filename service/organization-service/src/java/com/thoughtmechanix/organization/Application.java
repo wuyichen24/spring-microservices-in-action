@@ -12,10 +12,16 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 import javax.servlet.Filter;
 
+/**
+ * The bootstrap class for the organization service.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @SpringBootApplication
 @EnableEurekaClient
-//@EnableCircuitBreaker
-//@EnableBinding(Source.class)
 @EnableResourceServer                           // This is the protected service by OAuth2
 public class Application {
     @Bean

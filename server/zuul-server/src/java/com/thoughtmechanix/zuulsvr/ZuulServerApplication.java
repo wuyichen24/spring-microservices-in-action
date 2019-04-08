@@ -9,6 +9,14 @@ import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * The bootstrap class for the zuul server.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @SpringBootApplication
 @EnableZuulProxy                           // Enables the service to be a Zuul server
 public class ZuulServerApplication {

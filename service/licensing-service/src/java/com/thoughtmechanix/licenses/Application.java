@@ -27,12 +27,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 
-//@RefreshScope
-//@EnableEurekaClient
-//@EnableCircuitBreaker
-//@EnableBinding(Sink.class)
-//@EnableResourceServer
-
+/**
+ * The bootstrap class for the licensing service.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @SpringBootApplication
 @EntityScan(basePackages = {"com.thoughtmechanix.licenses.model"})
 @EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
