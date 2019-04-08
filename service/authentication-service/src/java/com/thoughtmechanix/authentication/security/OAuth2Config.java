@@ -26,12 +26,12 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {            // Define what client applications are registered with the service.
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {            // Define what client applications are registered with the service
         clients.inMemory()                                                                      // Store the application information in memory
-                .withClient("eagleeye")                                                         // Specify which application will register
+                .withClient("eagleeye")                                                         // Specify which client application will register
                 .secret("thisissecret")                                                         // Specify the secret which will be used to get the access token
-                .authorizedGrantTypes("refresh_token", "password", "client_credentials")        // Provide a list of the authorization grant types that will be supported by the service.
-                .scopes("webclient", "mobileclient");                                           // Define the types of the client applications can get the access token from the service.
+                .authorizedGrantTypes("refresh_token", "password", "client_credentials")        // Provide a list of the authorization grant types that will be supported by the service
+                .scopes("webclient", "mobileclient");                                           // Define the types of the client applications can get the access token from the service
     }
 
     @Override
