@@ -24,6 +24,3 @@ security:
   oauth2: 
     resource:
       filter-order: 3
-
-signing:
-  key: "345345fsdfsf5345"

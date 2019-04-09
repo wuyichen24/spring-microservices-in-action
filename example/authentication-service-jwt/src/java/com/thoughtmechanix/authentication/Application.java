@@ -12,16 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The bootstrap class for the authentication service.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/09/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @SpringBootApplication
 @RestController
 @EnableResourceServer
 @EnableAuthorizationServer
 public class Application {
-
-    //curl  eagleeye:thisissecret@192.168.99.100:8901/auth/oauth/token -d grant_type=password -client_id=eagleeye  -d scope=webclient -d username=william.woodward -d password=password2
-
-    //curl -H "Authorization: Bearer 24fb9e40-21d4-4e78-b211-92edfa2fc514" http://192.168.99.100:8901/auth/user
-    @RequestMapping(value = { "/user" }, produces = "application/json")
+    @RequestMapping(value = {"/user"}, produces = "application/json")
     public Map<String, Object> user(OAuth2Authentication user) {
         Map<String, Object> userInfo = new HashMap<>();
         userInfo.put("user", user.getUserAuthentication().getPrincipal());
@@ -29,10 +33,7 @@ public class Application {
         return userInfo;
     }
 
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-
 }

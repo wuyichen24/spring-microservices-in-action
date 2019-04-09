@@ -9,3 +9,4 @@ spring.datasource.password: "{cipher}8e2e38b0e293fb4c0a8def88b828a8b2a6d1f5984eb
 spring.datasource.testWhileIdle: "true"
 spring.datasource.validationQuery: "SELECT 1"
 spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.MySQL5Dialect"
+signing.key: "345345fsdfsf5345"                   # The symmetrical key for generating JWT token
