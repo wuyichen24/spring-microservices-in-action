@@ -1,6 +1,6 @@
 spring:
   application:
-    name: authenticationservicejwt
+    name: authenticationservice   # Don't change to other name, otherwise it can not get the configuration from config server
   profiles:
     active:
       default
