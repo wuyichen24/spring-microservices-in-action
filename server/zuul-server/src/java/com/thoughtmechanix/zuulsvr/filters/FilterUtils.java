@@ -4,7 +4,7 @@ import com.netflix.zuul.context.RequestContext;
 import org.springframework.stereotype.Component;
 
 /**
- * The tool class for filters.
+ * The tool class for zuul filters.
  * 
  * <p>This class centralizes some common-used constants and operations.
  * 
@@ -33,8 +33,8 @@ public class FilterUtils {
 
         if (ctx.getRequest().getHeader(CORRELATION_ID) !=null) {
             return ctx.getRequest().getHeader(CORRELATION_ID);
-        } else{
-            return  ctx.getZuulRequestHeaders().get(CORRELATION_ID);
+        } else {
+            return ctx.getZuulRequestHeaders().get(CORRELATION_ID);
         }
     }
 
@@ -58,9 +58,8 @@ public class FilterUtils {
         RequestContext ctx = RequestContext.getCurrentContext();
         if (ctx.getRequest().getHeader(ORG_ID) !=null) {
             return ctx.getRequest().getHeader(ORG_ID);
-        }
-        else{
-            return  ctx.getZuulRequestHeaders().get(ORG_ID);
+        } else {
+            return ctx.getZuulRequestHeaders().get(ORG_ID);
         }
     }
 
@@ -75,31 +74,56 @@ public class FilterUtils {
         ctx.addZuulRequestHeader(ORG_ID,  orgId);
     }
 
+    /**
+     * Get the user ID from the header of a HTTP request.
+     * 
+     * @return  The value of user ID.
+     */
     public final String getUserId(){
         RequestContext ctx = RequestContext.getCurrentContext();
         if (ctx.getRequest().getHeader(USER_ID) !=null) {
             return ctx.getRequest().getHeader(USER_ID);
-        }
-        else{
-            return  ctx.getZuulRequestHeaders().get(USER_ID);
+        } else {
+            return ctx.getZuulRequestHeaders().get(USER_ID);
         }
     }
 
+    /**
+     * Set the user ID to the header of a HTTP request.
+     * 
+     * @param  userId
+     *         The user ID needs to be set.
+     */
     public void setUserId(String userId){
         RequestContext ctx = RequestContext.getCurrentContext();
         ctx.addZuulRequestHeader(USER_ID,  userId);
     }
 
+    /**
+     * Get the authentication token from the header of a HTTP request.
+     * 
+     * @return  The value of the authentication token.
+     */
     public final String getAuthToken(){
         RequestContext ctx = RequestContext.getCurrentContext();
         return ctx.getRequest().getHeader(AUTH_TOKEN);
     }
 
+    /**
+     * Get the service ID from the header of a HTTP request.
+     * 
+     * <p>If the service ID is missing in the header, this method will return 
+     * an empty string.
+     * 
+     * @return  The value of service ID.
+     */
     public String getServiceId(){
         RequestContext ctx = RequestContext.getCurrentContext();
 
-        //We might not have a service id if we are using a static, non-eureka route.
-        if (ctx.get("serviceId")==null) return "";
+        // We might not have a service id if we are using a static, non-eureka route.
+        if (ctx.get("serviceId") == null) { 
+        	return "";
+        }
         return ctx.get("serviceId").toString();
     }
 }

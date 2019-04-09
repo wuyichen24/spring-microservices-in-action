@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: authenticationservicejwt
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      enabled: true
