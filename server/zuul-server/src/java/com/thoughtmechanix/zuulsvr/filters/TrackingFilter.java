@@ -1,7 +1,12 @@
 package com.thoughtmechanix.zuulsvr.filters;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.thoughtmechanix.zuulsvr.config.ServiceConfig;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +39,9 @@ public class TrackingFilter extends ZuulFilter{
 
     @Autowired
     FilterUtils filterUtils;
+    
+    @Autowired
+    private ServiceConfig serviceConfig;
 
     @Override
     public String filterType() {
@@ -80,6 +88,34 @@ public class TrackingFilter extends ZuulFilter{
      * @return  The generated correlation ID.
      */
     private String generateCorrelationId() {
-    		return java.util.UUID.randomUUID().toString();
+    	return java.util.UUID.randomUUID().toString();
+    }
+    
+    /**
+     * Get the organization Id from the JWT token.
+     * 
+     * <p>You can add a custom field into a JWT token. So this method is to 
+     * parse the custom field (the organization Id field) from the JWT token 
+     * as a header in a HTTP request.
+     * 
+     * @return  The value of the organization Id field 
+     *          or {@code null} if the organization Id field is missing in JWT 
+     *          token.
+     */
+    protected String getOrganizationId(){
+        String result = "";
+        
+        if (filterUtils.getAuthToken() != null) {
+            String authToken = filterUtils.getAuthToken().replace("Bearer ","");
+            try {
+                Claims claims = Jwts.parser()
+                        .setSigningKey(serviceConfig.getJwtSigningKey().getBytes("UTF-8"))
+                        .parseClaimsJws(authToken).getBody();
+                result = (String) claims.get("organizationId");
+            } catch (Exception e){
+                logger.error("There is an error occurred when decrypting JWT token", e);
+            }
+        }
+        return result;
     }
 }

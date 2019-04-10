@@ -37,3 +37,6 @@ zuul:
   routes:
     organizationservice: /organization/**           # Customize the route to organization service ("/organizationservice/**" =>> "/organization/**"")
     licensingservice: /licensing/**                 # Customize the route to licensing service    ("/licensingservice/**"    =>> "/licensing/**"    )
+
+signing:
+  key: 345345fsdfsf5345

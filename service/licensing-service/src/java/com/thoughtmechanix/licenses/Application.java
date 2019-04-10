@@ -1,6 +1,14 @@
 package com.thoughtmechanix.licenses;
 
+import java.util.Collections;
+import java.util.List;
+
 import com.thoughtmechanix.licenses.config.ServiceConfig;
+import com.thoughtmechanix.licenses.utils.UserContextInterceptor;
+
+
+
+
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -17,6 +25,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 //import org.springframework.cloud.stream.annotation.EnableBinding;
 //import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 //import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 //import org.springframework.data.redis.core.RedisTemplate;
@@ -25,6 +34,7 @@ import org.springframework.context.annotation.Bean;
 //import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -73,6 +83,25 @@ public class Application {
     @Bean
     public RestTemplate getRestTemplate(){
     	return new RestTemplate();
+    }
+    
+    /**
+     * Inject the JWT token into the downstream service calls.
+     * 
+     * @return  The {@code RestTemplate} for sending HTTP requests.
+     */
+    @Primary
+    @Bean
+    public RestTemplate getCustomRestTemplate() {
+    	RestTemplate template = new RestTemplate();
+    	List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
+    	if (interceptors == null) {
+    		template.setInterceptors(Collections.singletonList(new UserContextInterceptor()));  // UserContextInterceptor will inject Authentication header in every REST call
+    	} else {
+    		interceptors.add(new UserContextInterceptor());
+    		template.setInterceptors(interceptors);
+    	}
+    	return template;
     }
 
     public static void main(String[] args) {

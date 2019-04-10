@@ -6,4 +6,7 @@ dependencies {
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version: '1.3.5.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-sleuth-zipkin',  version: '1.3.5.RELEASE'
 	compile group: 'org.apache.httpcomponents', name: 'httpclient',                  version: '4.5.2'
+	
+	compile group: 'io.jsonwebtoken',           name: 'jjwt',                        version: '0.7.0'
+	
 }

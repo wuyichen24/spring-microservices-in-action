@@ -67,6 +67,10 @@ public class JWTTokenStoreConfig {
     /**
      * Create a new JWT token enhancer.
      * 
+     * <p>The {@code JWTTokenEnhancer} class will help on adding custom fields 
+     * into a JWT token. Currently, the organization Id field is added into 
+     * the JWT token.
+     * 
      * @return  The {@code TokenEnhancer} object.
      */
     @Bean
