@@ -9,7 +9,7 @@ This source code was re-organized by the [original source code](https://www.mann
 
 There are the differences between this source code and the original source code:
 * Use Gradle as Java build automation tool rather than Maven.
-* Use MySQL as database rather than PostgreSQL in the licensing service.
+* Use MySQL as database rather than PostgreSQL.
 * Change the port of the organization service to 8060 to avoid the address conflict with the licensing service.
 * Change the port of the special routes service to 8040 to avoid the address conflict with the licensing service.
 * Change the port of the authentication service to 8901 to make it same with the example in the book.
