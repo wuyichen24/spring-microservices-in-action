@@ -8,9 +8,11 @@ This repository contains the source code of the book "[Spring Microservices in A
 This source code was re-organized by the [original source code](https://www.manning.com/downloads/1578) of the book and I make sure each module is runnable.
 
 There are the differences between this source code and the original source code:
-* Use Gradle as Java build automation tool rather than Maven.
-* Use MySQL as database rather than PostgreSQL.
-* Change the port of the organization service to 8060 to avoid the address conflict with the licensing service.
-* Change the port of the special routes service to 8040 to avoid the address conflict with the licensing service.
-* Change the port of the authentication service to 8901 to make it same with the example in the book.
-* Add comments to make the code easy to read.
+- Use Gradle as Java build automation tool rather than Maven.
+- Use MySQL as database rather than PostgreSQL.
+- Change the port of the organization service to 8060 to avoid the address conflict with the licensing service.
+- Change the port of the special routes service to 8040 to avoid the address conflict with the licensing service.
+- Change the port of the authentication service to 8901 to make it same with the example in the book.
+- Add comments to make the code easy to read.
+
+![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
