@@ -17,12 +17,12 @@ There are the differences between this source code and the original source code:
 
 ![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
 
-This microservices project is based on Spring Boot and Spring Cloud with Netflix OSS:
+This microservices project is based on Spring Boot and Spring Cloud with [Netflix OSS](https://netflix.github.io/):
 - Netflix Eureka (service discovery)
 - Netflix Zuul (service gateway)
 - Netflix Hystrix (resiliency patterns)
 - Netflix Feign (HTTP API client)
-- Netflix Ribbon (load balancing)
+- Netflix Ribbon (service communication, load balancing)
 
 ## Content List in Wiki
 - [Overview](https://github.com/wuyichen24/spring-microservices-in-action/wiki)
