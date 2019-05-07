@@ -504,6 +504,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update_Organization_By_Organzation_Id (With access token)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer cb0a4eb5-17ff-41e8-bf05-da9866eefeac",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"name\": \"customer-crm-co\",\n  \"contactName\": \"Mark Balster\",\n  \"contactEmail\": \"mark.balster@customercrmco.com\",\n  \"contactPhone\": \"832-555-2222\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8060/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8060",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+							]
+						},
+						"description": "For testing the Kafka message queue in the chapter 8"
+					},
+					"response": []
 				}
 			]
 		}

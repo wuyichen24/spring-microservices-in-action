@@ -6,19 +6,20 @@ import com.thoughtmechanix.licenses.repository.OrganizationRedisRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.cloud.stream.annotation.EnableBinding;
-//import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 
-//@EnableBinding(CustomChannels.class)
+@EnableBinding(Sink.class)
 public class OrganizationChangeHandler {
 //    @Autowired
 //    private OrganizationRedisRepository organizationRedisRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(OrganizationChangeHandler.class);
 
-//    @StreamListener("inboundOrgChanges")
-//    public void loggerSink(OrganizationChangeModel orgChange) {
-//        logger.debug("Received a message of type " + orgChange.getType());
+    @StreamListener(Sink.INPUT)
+    public void loggerSink(OrganizationChangeModel orgChange) {
+    	logger.info("Received an event for organization id {}", orgChange.getOrganizationId());
 //        
 //        switch(orgChange.getAction()){
 //            case "GET":
@@ -40,6 +41,5 @@ public class OrganizationChangeHandler {
 //                break;
 //
 //        }
-//    }
-
+    }
 }

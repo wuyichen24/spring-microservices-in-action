@@ -1,14 +1,18 @@
-# spring:
-#   cloud:
-#     stream:
-#       bindings:
-#         inboundOrgChanges:
-#           destination: orgChangeTopic
-#           content-type: application/json
-#           group: licensingGroup
-#         binder:
-#           zkNodes: localhost
-#           brokers: localhost
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: orgChangeTopic
+          content-type: application/json
+          group: licensingGroup
+        binder:
+          zkNodes: localhost
+          brokers: localhost
+  data:
+    jpa:
+      repositories:
+         enabled: true
 
 # security:
 #   oauth2:
@@ -30,10 +34,3 @@ eureka:
 #     com.netflix: WARN
 #     org.springframework.web: WARN
 #     com.thoughtmechanix: DEBUG
-
-spring:
-  data:
-    jpa:
-      repositories:
-         enabled: true
-

@@ -1,15 +1,23 @@
 package com.thoughtmechanix.licenses.events.models;
 
+/**
+ * The event POJO for any organization change.
+ * 
+ * @author  Wuyi Chen
+ * @date    05/05/2019
+ * @version 1.0
+ * @since   1.0
+ */
 public class OrganizationChangeModel{
     private String type;
-    private String action;
-    private String organizationId;
-    private String correlationId;
+    private String action;           // The action of change: Add, Update or Delete
+    private String organizationId;   // The organization ID associated with the event
+    private String correlationId;    // The correlation ID the service call the triggered the event
 
-    public OrganizationChangeModel(){
-        super();
+    public OrganizationChangeModel() {
+    	super();
     }
-
+    
     public OrganizationChangeModel(String type, String action, String organizationId, String correlationId) {
         super();
         this.type           = type;
@@ -33,7 +41,6 @@ public class OrganizationChangeModel{
     public void setAction(String action) {
         this.action = action;
     }
-
 
     public String getOrganizationId() {
         return organizationId;
