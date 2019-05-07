@@ -43,6 +43,7 @@ This microservices project uses [Apache Kafka](https://kafka.apache.org/) with [
    - [Zuul Filters](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zuul-Filters)
    - [Protect Service with Spring Security and OAuth2](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Protect-Service-with-Spring-Security-and-OAuth2)
    - [Use JWT as Access Token](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Use-JWT-as-Access-Token)
+   - [Message Queue with Kafka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Message-Queue-with-Kafka)
 - [Components](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Components)
    - [Servers]()
       - [Config](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Config-Server)
