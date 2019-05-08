@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * The controller class for defining available calls to the API endpoint of 
+ * organization service.
+ * 
+ * @author  Wuyi Chen
+ * @date    05/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @RestController
 @RequestMapping(value="v1/organizations")
 public class OrganizationServiceController {
@@ -20,28 +29,61 @@ public class OrganizationServiceController {
     private OrganizationService orgService;
     private static final Logger logger = LoggerFactory.getLogger(OrganizationServiceController.class);
 
-    @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
-    public Organization getOrganization(@PathVariable("organizationId") String organizationId) {
-        logger.debug("Looking up data for org {}", organizationId);
+    /**
+     * Query an organization by the organization ID.
+     * 
+     * @param  orgId
+     *         The organization ID for looking up.
+     *         
+     * @return  The matched organization record.
+     */
+    @RequestMapping(value="/{organizationId}", method = RequestMethod.GET)
+    public Organization getOrganization(@PathVariable("organizationId") String orgId) {
+        logger.debug("Query an organization by the organization ID {}", orgId);
 
-        Organization org = orgService.getOrg(organizationId);
-        org.setContactName(org.getContactName());
-        return org;
+        return orgService.getOrg(orgId);
+    }
+    
+    /**
+     * Add a new organization.
+     * 
+     * @param  org
+     *         The new organization needs to be added.
+     */
+    @RequestMapping(value="/{organizationId}", method = RequestMethod.POST)
+    public void saveOrganization(@RequestBody Organization org) {
+    	logger.debug("Add a new organization: {}", org.getId());
+    
+    	orgService.saveOrg(org);
     }
 
-    @RequestMapping(value="/{organizationId}",method = RequestMethod.PUT)
+    /**
+     * Update an organization by the organization ID.
+     * 
+     * @param  orgId
+     *         The organization ID for looking up.
+     * 
+     * @param  org
+     *         The organization information needs to be updated to.
+     */
+    @RequestMapping(value="/{organizationId}", method = RequestMethod.PUT)
     public void updateOrganization(@PathVariable("organizationId") String orgId, @RequestBody Organization org) {
+    	logger.debug("Update an organization by the organization ID {}", orgId);
+    	
         orgService.updateOrg(org);
     }
 
-    @RequestMapping(value="/{organizationId}",method = RequestMethod.POST)
-    public void saveOrganization(@RequestBody Organization org) {
-       orgService.saveOrg(org);
-    }
-
+    /**
+     * Delete an organization by the organization ID.
+     * 
+     * @param  orgId
+     *         The organization ID for identifying the record needs to be deleted.
+     */
     @RequestMapping(value = "/{organizationId}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteOrganization(@PathVariable("orgId") String orgId,  @RequestBody Organization org) {
-        orgService.deleteOrg(org);
+    public void deleteOrganization(@PathVariable("orgId") String orgId) {
+    	logger.debug("Delete an organization by the organization ID {}", orgId);
+    	
+        orgService.deleteOrg(orgId);
     }
 }

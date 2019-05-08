@@ -10,6 +10,8 @@ import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * The implementation of the license service
+ * The license service for processing operations on license.
  *
  * @author  Wuyi Chen
  * @date    02/14/2019
@@ -42,12 +44,52 @@ public class LicenseService {
 
     @Autowired
     OrganizationDiscoveryClient organizationDiscoveryClient;
+    
+    private static final Logger logger = LoggerFactory.getLogger(LicenseService.class);
 
+    /**
+     * Query a multiple licenses by the organization ID.
+     * 
+     * @param  organizationId
+     *         The organization ID for looking up.
+     *         
+     * @return  The all the matched license records.
+     */
+    public List<License> getLicensesByOrg(String organizationId) {
+        randomlyRunLong();     // this function just simulate the long running randomly to trigger the time out exception from circuit breaker
+        return licenseRepository.findByOrganizationId(organizationId);
+    }
+    
+    /**
+     * Query a license by the organization ID and the license ID.
+     * 
+     * @param  organizationId
+     *         The organization ID for looking up.
+     *         
+     * @param  licenseId
+     *         The license ID for looking up.
+     *         
+     * @return  The matched license record.
+     */
     public License getLicense(String organizationId,String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
         return license.withComment(config.getExampleProperty());
     }
     
+    /**
+     * Query a license by the organization ID, the license ID and the client type.
+     * 
+     * @param  organizationId
+     *         The organization ID for looking up.
+     * 
+     * @param  licenseId
+     *         The license ID for looking up.
+     * 
+     * @param  clientType
+     *         The client type for looking up.
+     * 
+     * @return  The matched license record.
+     */
     public License getLicense(String organizationId, String licenseId, String clientType) {
     	License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
     	
@@ -61,22 +103,29 @@ public class LicenseService {
     		.withComment(config.getExampleProperty());
     }
        
+    /**
+     * Add a new license.
+     * 
+     * @param  license
+     *         The new license needs to be added.
+     */
     @HystrixCommand (fallbackMethod = "buildFallbackLicenseList",           // if this function excess the timeout, it will trigger the fallback function
             threadPoolKey = "licenseByOrgThreadPool",                       // define the unique name of the new thread pool
             threadPoolProperties =
                     { @HystrixProperty(name = "coreSize",value="30"),       // the size of the new thread pool
                       @HystrixProperty(name="maxQueueSize", value="10")}    // the size of the queue in front of the thread pool 
     )                                                                       // to hold the requests when the thread pool is full
-    public List<License> getLicensesByOrg(String organizationId) {
-        randomlyRunLong();     // this function just simulate the long running randomly to trigger the time out exception from circuit breaker
-        return licenseRepository.findByOrganizationId(organizationId);
-    }
-    
     public void saveLicense(License license){
         license.withId(UUID.randomUUID().toString());
         licenseRepository.save(license);
     }
 
+    /**
+     * Update a license.
+     * 
+     * @param  license
+     *         The license information needs to be updated to.
+     */
     @HystrixCommand (
     		fallbackMethod = "buildFallbackLicenseList",
     		threadPoolKey = "licenseByOrgThreadPool",
@@ -91,17 +140,17 @@ public class LicenseService {
                      @HystrixProperty(name="metrics.rollingStats.numBuckets", value="5")}
     )
     public void updateLicense(License license){
-//    	licenseRepository.save(license);
+    	licenseRepository.save(license);
     }
 
-    public void deleteLicense(License license){
-//        licenseRepository.delete( license.getLicenseId());
-    }
-    
-    @HystrixCommand
-    private Organization getOrganization(String organizationId) {
-//        return organizationRestClient.getOrganization(organizationId);
-    		return null;
+    /**
+     * Delete a license by the license ID.
+     * 
+     * @param  licenseId
+     *         The license ID for identifying the record needs to be deleted.
+     */
+    public void deleteLicense(String licenseId){
+        licenseRepository.delete(licenseId);
     }
 
     /**
@@ -129,7 +178,7 @@ public class LicenseService {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	logger.error("Sleep with error", e);
         }
     }
     
@@ -152,15 +201,15 @@ public class LicenseService {
 
         switch (clientType) {
             case "feign":
-                System.out.println("I am using the feign client");
+                logger.info("I am using the feign client");
                 organization = organizationFeignClient.getOrganization(organizationId);
                 break;
             case "rest":
-                System.out.println("I am using the rest client");
+            	logger.info("I am using the rest client");
                 organization = organizationRestClient.getOrganization(organizationId);
                 break;
             case "discovery":
-                System.out.println("I am using the discovery client");
+            	logger.info("I am using the discovery client");
                 organization = organizationDiscoveryClient.getOrganization(organizationId);
                 break;
             default:
@@ -180,7 +229,7 @@ public class LicenseService {
      * @param organizationId
      * @return
      */
-    private List<License> buildFallbackLicenseList(String organizationId){
+    protected List<License> buildFallbackLicenseList(String organizationId){
         List<License> fallbackList = new ArrayList<>();
         License license = new License()
                 .withId("0000000-00-00000")

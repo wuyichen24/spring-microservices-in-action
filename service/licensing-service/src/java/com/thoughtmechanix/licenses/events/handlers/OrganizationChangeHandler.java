@@ -10,6 +10,15 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 
+/**
+ * The message handler for receiving the message of the organization change 
+ * from the message queue.
+ * 
+ * @author  Wuyi Chen
+ * @date    05/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @EnableBinding(Sink.class)
 public class OrganizationChangeHandler {
 //    @Autowired

@@ -58,9 +58,7 @@ public class Application {
     private ServiceConfig serviceConfig;
     
     private static final Logger   logger        = LoggerFactory.getLogger(Application.class);
-//
-//    private static final Logger logger = LoggerFactory.getLogger(Application.class);
-//
+
 //    @Bean
 //    public OAuth2RestTemplate oauth2RestTemplate(OAuth2ClientContext oauth2ClientContext, OAuth2ProtectedResourceDetails details) {
 //        return new OAuth2RestTemplate(details, oauth2ClientContext);
@@ -104,11 +102,6 @@ public class Application {
     		template.setInterceptors(interceptors);
     	}
     	return template;
-    }
-    
-    @StreamListener(Sink.INPUT)
-    public void loggerSink(OrganizationChangeModel orgChange) {
-    	logger.info("Received an event for organization id {}", orgChange.getOrganizationId());
     }
 
     public static void main(String[] args) {
