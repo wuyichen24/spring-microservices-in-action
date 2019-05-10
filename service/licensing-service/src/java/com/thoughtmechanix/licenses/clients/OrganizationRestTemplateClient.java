@@ -7,7 +7,6 @@ import com.thoughtmechanix.licenses.utils.UserContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -51,7 +50,7 @@ public class OrganizationRestTemplateClient {
         Organization org = checkRedisCache(organizationId);
 
         if (org != null){
-            logger.info("I have successfully retrieved an organization {} from the redis cache: {}", organizationId, org);
+            logger.debug("I have successfully retrieved an organization {} from the redis cache: {}", organizationId, org);
             return org;
         }
 
@@ -62,7 +61,6 @@ public class OrganizationRestTemplateClient {
                         HttpMethod.GET,
                         null, Organization.class, organizationId);
 
-        /*Save the record from cache*/
         org = restExchange.getBody();
 
         if (org!=null) {
@@ -72,6 +70,15 @@ public class OrganizationRestTemplateClient {
         return org;
     }
 	
+    /**
+     * Check Redis has a certain organization record or not.
+     * 
+     * @param  organizationId
+     *         The organization ID for looking up.
+     *         
+     * @return  The match organization record if found;
+     *          Otherwise, return {@code null}.
+     */
     private Organization checkRedisCache(String organizationId) {
         try {
             return orgRedisRepo.findOrganization(organizationId);

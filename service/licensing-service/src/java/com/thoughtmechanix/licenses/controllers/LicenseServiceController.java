@@ -95,7 +95,7 @@ public class LicenseServiceController {
      * @param  license
      *         The license information needs to be updated to.
      */
-    @RequestMapping(value = "{licenseId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{licenseId}", method = RequestMethod.PUT)
     public void updateLicenses(@PathVariable("licenseId") String licenseId, @RequestBody License license) {
         licenseService.updateLicense(license);
     }
@@ -117,7 +117,7 @@ public class LicenseServiceController {
      * @param  licenseId
      *         The license ID for identifying the record needs to be deleted.
      */
-    @RequestMapping(value = "{licenseId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{licenseId}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteLicenses(@PathVariable("licenseId") String licenseId) {
          licenseService.deleteLicense(licenseId);
