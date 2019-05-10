@@ -16,8 +16,8 @@ import org.springframework.cloud.stream.messaging.Sink;
  * 
  * <p>If the licensing service receives a message about a change on 
  * a organization record. the licensing service will delete the cached 
- * organization record in Redis (because the record cached before is 
- * out-of-date) 
+ * organization record (by organization ID) in Redis (because the record 
+ * cached before is out-of-date).
  * 
  * @author  Wuyi Chen
  * @date    05/08/2019
