@@ -45,6 +45,7 @@ This microservices project uses [Apache Kafka](https://kafka.apache.org/) with [
    - [Protect Service with Spring Security and OAuth2](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Protect-Service-with-Spring-Security-and-OAuth2)
    - [Use JWT as Access Token](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Use-JWT-as-Access-Token)
    - [Integrate with Message Queue (Kafka)](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Message-Queue-(Kafka))
+   - [Integrate with Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Redis)
 - [Components](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Components)
    - [Servers]()
       - [Config](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Config-Server)
