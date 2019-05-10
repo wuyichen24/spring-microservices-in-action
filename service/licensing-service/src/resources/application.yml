@@ -28,9 +28,9 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
 
-# #Setting logging levels
-# logging:
-#   level:
-#     com.netflix: WARN
-#     org.springframework.web: WARN
-#     com.thoughtmechanix: DEBUG
+# Letting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG

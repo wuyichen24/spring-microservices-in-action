@@ -1,15 +1,17 @@
 {
 	"info": {
-		"_postman_id": "2929368a-6cbc-497f-9bf6-5a28a7112fc7",
+		"_postman_id": "adde51bf-bb5e-403e-ba66-3eb550e26407",
 		"name": "Spring-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "ConfigServer",
+			"description": null,
 			"item": [
 				{
 					"name": "Basic",
+					"description": null,
 					"item": [
 						{
 							"name": "Get_Metrics_From_Config_Server",
@@ -63,6 +65,7 @@
 				},
 				{
 					"name": "Config",
+					"description": null,
 					"item": [
 						{
 							"name": "Get_Licensing_Service_Config_From_Config_Server (Default)",
@@ -146,6 +149,7 @@
 		},
 		{
 			"name": "EurekaServer",
+			"description": null,
 			"item": [
 				{
 					"name": "Get_Detailed_Info_Of_Organization__Service",
@@ -200,9 +204,11 @@
 		},
 		{
 			"name": "ZuulServer",
+			"description": null,
 			"item": [
 				{
 					"name": "DownstreamServiceCalls",
+					"description": null,
 					"item": [
 						{
 							"name": "Get_Licenses_By_Organization_Id (Through Zuul Gateway)",
@@ -239,8 +245,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer f8ad3928-4606-4153-b776-e000bec24477",
-										"type": "text"
+										"value": "Bearer 15c8bb91-6942-47ad-a849-bdc6c2fffc4f"
 									}
 								],
 								"body": {
@@ -295,6 +300,7 @@
 		},
 		{
 			"name": "LicensingService",
+			"description": null,
 			"item": [
 				{
 					"name": "Check_Licensing_Service_Can_Get_Config_From_Config_Server",
@@ -351,7 +357,12 @@
 					"name": "Get_License_By_Organization_Id_And_License_Id_And_Client_Type",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 15c8bb91-6942-47ad-a849-bdc6c2fffc4f"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -380,6 +391,7 @@
 		},
 		{
 			"name": "AuthenticationService",
+			"description": null,
 			"item": [
 				{
 					"name": "Get_Access_Token (For user john.carnell)",
@@ -541,6 +553,7 @@
 		},
 		{
 			"name": "OrganizationService",
+			"description": null,
 			"item": [
 				{
 					"name": "Get_Organization_By_Organzation_Id (With access token)",
