@@ -31,7 +31,7 @@ import java.io.IOException;
  * incoming REST call:
  * <ul>
  *   <li>CORRELATION_ID (tmx-correlation-id)
- *   <li>AUTH_TOKEN     (tmx-auth-token)
+ *   <li>AUTH_TOKEN     (Authorization)
  *   <li>USER_ID        (tmx-user-id)
  *   <li>ORG_ID         (tmx-org-id)
  * </ul>

@@ -202,6 +202,73 @@
 			"name": "ZuulServer",
 			"item": [
 				{
+					"name": "DownstreamServiceCalls",
+					"item": [
+						{
+							"name": "Get_Licenses_By_Organization_Id (Through Zuul Gateway)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Organization_By_Organization_Id (With access token, Through Zuul Gateway)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer f8ad3928-4606-4153-b776-e000bec24477",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5555/organizationservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"organizationservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+									]
+								},
+								"description": "This call is to test zuul server can pass the access token to downstream service which is protect by access token."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Get_All_Mapped_Routes",
 					"request": {
 						"method": "GET",
@@ -281,7 +348,7 @@
 					"response": []
 				},
 				{
-					"name": "Get_Licenses_By_Organization_Id (Through Zuul Gateway)",
+					"name": "Get_License_By_Organization_Id_And_License_Id_And_Client_Type",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -290,21 +357,22 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a/rest",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
-								"licensingservice",
 								"v1",
 								"organizations",
 								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
 								"licenses",
-								""
+								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+								"rest"
 							]
-						}
+						},
+						"description": "This call will test the integration with Redis"
 					},
 					"response": []
 				}
@@ -481,7 +549,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer 7a5d22dc-a9fc-42ee-bed6-6ca87cf7fb6c",
+								"value": "Bearer cb0a4eb5-17ff-41e8-bf05-da9866eefeac",
 								"type": "text"
 							}
 						],

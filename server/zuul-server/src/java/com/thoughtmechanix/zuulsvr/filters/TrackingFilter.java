@@ -66,8 +66,13 @@ public class TrackingFilter extends ZuulFilter{
             filterUtils.setCorrelationId(generateCorrelationId());
             logger.debug("tmx-correlation-id generated in tracking filter: {}.", filterUtils.getCorrelationId());
         }
-
+        
+        if (isAccessTokenPresent()) {
+        	filterUtils.setAuthToken(filterUtils.getAuthToken());     // Pass the access token to the downstream service which the access token is required (like organization service)
+        }
+        
         RequestContext ctx = RequestContext.getCurrentContext();
+        
         logger.debug("Processing incoming request for {}.",  ctx.getRequest().getRequestURI());
         return null;
     }
@@ -80,6 +85,16 @@ public class TrackingFilter extends ZuulFilter{
      */
     private boolean isCorrelationIdPresent() {
         return (filterUtils.getCorrelationId() != null);
+    }
+    
+    /**
+     * Check the access token is present or not.
+     * 
+     * @return  {@code true} if the access token is present;
+     *          {@code false} otherwise.
+     */
+    private boolean isAccessTokenPresent() {
+    	return (filterUtils.getAuthToken() != null);
     }
 
     /**

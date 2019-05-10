@@ -31,12 +31,12 @@ eureka:
       defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
 
 # Zuul configuration
-zuul:
+#zuul:
   # ignored-services: '*'                           # Exclude all the auto-generated routes between the Eureka service IDs and the registered services
   # prefix:  /api                                   # Add the prefix in all the service calls, like "/organization/**" =>> "/api/organization/**"
-  routes:
-    organizationservice: /organization/**           # Customize the route to organization service ("/organizationservice/**" =>> "/organization/**"")
-    licensingservice: /licensing/**                 # Customize the route to licensing service    ("/licensingservice/**"    =>> "/licensing/**"    )
+  #routes:
+    #organizationservice: /organization/**           # Customize the route to organization service ("/organizationservice/**" =>> "/organization/**"")
+    #licensingservice: /licensing/**                 # Customize the route to licensing service    ("/licensingservice/**"    =>> "/licensing/**"    )
 
 signing:
   key: 345345fsdfsf5345

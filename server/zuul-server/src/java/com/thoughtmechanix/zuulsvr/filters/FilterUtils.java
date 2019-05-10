@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FilterUtils {
     public static final String CORRELATION_ID    = "tmx-correlation-id";
-    public static final String AUTH_TOKEN        = "tmx-auth-token";
+    public static final String AUTH_TOKEN        = "Authorization";
     public static final String USER_ID           = "tmx-user-id";
     public static final String ORG_ID            = "tmx-org-id";
     public static final String PRE_FILTER_TYPE   = "pre";
@@ -100,13 +100,24 @@ public class FilterUtils {
     }
 
     /**
-     * Get the authentication token from the header of a HTTP request.
+     * Get the access token from the header of a HTTP request.
      * 
      * @return  The value of the authentication token.
      */
     public final String getAuthToken(){
         RequestContext ctx = RequestContext.getCurrentContext();
         return ctx.getRequest().getHeader(AUTH_TOKEN);
+    }
+    
+    /**
+     * Set the access token to the header of a HTTP request.
+     * 
+     * @param  authToken
+     *         The access token needs to be set.
+     */
+    public void setAuthToken(String authToken){
+        RequestContext ctx = RequestContext.getCurrentContext();
+        ctx.addZuulRequestHeader(AUTH_TOKEN,  authToken);
     }
 
     /**

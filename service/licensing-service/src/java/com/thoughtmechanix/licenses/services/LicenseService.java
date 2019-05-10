@@ -183,7 +183,7 @@ public class LicenseService {
     }
     
     /**
-     * Look up different types of clients to invoke the organization service
+     * Get the organization record by an organization ID.
      * 
      * <p>There are 3 types of clients:
      * <ul>
@@ -192,7 +192,8 @@ public class LicenseService {
      *  <li>feign: Netflix Feign via Ribbon.
      * </ul>
      * 
-     * @param organizationId
+     * @param  organizationId
+     * 
      * @param clientType
      * @return
      */
