@@ -32,7 +32,7 @@ This microservices project uses [Apache Kafka](https://kafka.apache.org/) with [
    - [ZooKeeper](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-zookeeper)
    - [Kafka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-kafka)
    - [Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-redis)
-- [Essentials](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Essentials)
+- [Technical Essentials](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Technical-Essentials)
    - [Autowired](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Autowired)
    - [SpringData JPA](https://github.com/wuyichen24/spring-microservices-in-action/wiki/SpringData-JPA)
    - [Configuration File Auto-loading](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Configuration-File-Auto-loading)
