@@ -66,4 +66,6 @@ This microservices project is based on
       - [Organization](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Organization-Service)
       - [Authentication](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Authentication-Service)
       - [Special Routes](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Special-Routes-Service)
-
+   - [Database](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Database)
+   - [Message Queue](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Message-Queue)
+   - [Cache](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Cache)
