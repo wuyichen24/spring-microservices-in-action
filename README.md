@@ -17,14 +17,22 @@ There are the differences between this source code and the original source code:
 
 ![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
 
-This microservices project is based on Spring Boot and Spring Cloud with [Netflix OSS](https://netflix.github.io/):
-- Netflix Eureka (service discovery)
-- Netflix Zuul (service gateway)
-- Netflix Hystrix (resiliency patterns)
-- Netflix Feign (HTTP API client)
-- Netflix Ribbon (service communication, load balancing)
-
-This microservices project uses [Apache Kafka](https://kafka.apache.org/) with [Apache ZooKeeper](https://zookeeper.apache.org/) as message queue solution.
+This microservices project is based on 
+- **Core**
+   - Spring Cloud with [Netflix OSS](https://netflix.github.io/)
+      - Netflix Eureka (service discovery)
+      - Netflix Zuul (service gateway)
+      - Netflix Hystrix (resiliency patterns)
+      - Netflix Feign (HTTP API client)
+      - Netflix Ribbon (service communication, load balancing)
+- **Message Queue**
+   - [Apache Kafka](https://kafka.apache.org/) with [Apache ZooKeeper](https://zookeeper.apache.org/)
+- **Cache**
+   - [Redis](https://redis.io/)
+- **Database**
+   - [MySQL](https://www.mysql.com/)
+- **Security**
+   - [OAuth2](https://oauth.net/2/)
 
 ## Content List in Wiki
 - [Overview](https://github.com/wuyichen24/spring-microservices-in-action/wiki)
@@ -58,4 +66,6 @@ This microservices project uses [Apache Kafka](https://kafka.apache.org/) with [
       - [Organization](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Organization-Service)
       - [Authentication](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Authentication-Service)
       - [Special Routes](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Special-Routes-Service)
-
+   - [Database](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Database)
+   - [Message Queue](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Message-Queue)
+   - [Cache](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Cache)
