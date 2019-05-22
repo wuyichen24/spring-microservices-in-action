@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>    <!-- load Spring default values -->
+	<appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">     <!-- redirect the log to syslog endpoint -->
+    	<syslogHost>logs6.papertrailapp.com</syslogHost>
+    	<facility>SYSLOG</facility>
+    	<port>50395</port>
+    	<suffixPattern>eurekaserver [%thread] %logger %msg</suffixPattern>
+  	</appender>
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">           <!-- redirect the log to console (standard output) -->
+    	<encoder>
+      		<pattern>${CONSOLE_LOG_PATTERN}</pattern>                              <!-- use Spring default log pattern -->
+            <charset>utf8</charset>
+    	</encoder>
+  	</appender>
+  	<root level="INFO">
+    	<appender-ref ref="SYSLOG" />
+    	<appender-ref ref="STDOUT" />
+  	</root>
+</configuration>
