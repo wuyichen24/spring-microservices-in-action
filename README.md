@@ -54,6 +54,7 @@ This microservices project is based on
    - [Use JWT as Access Token](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Use-JWT-as-Access-Token)
    - [Integrate with Message Queue (Kafka)](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Message-Queue-(Kafka))
    - [Integrate with Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Redis)
+   - [Tune Logging](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Tune-Logging)
 - [Core Application Logic](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Core-Application-Logic)
 - [Components](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Components)
    - [Servers]()
