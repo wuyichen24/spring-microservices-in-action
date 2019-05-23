@@ -1,6 +1,5 @@
 package com.thoughtmechanix.licenses.events.handlers;
 
-import com.thoughtmechanix.licenses.events.CustomChannels;
 import com.thoughtmechanix.licenses.events.models.OrganizationChangeModel;
 import com.thoughtmechanix.licenses.repository.OrganizationRedisRepository;
 import org.slf4j.Logger;

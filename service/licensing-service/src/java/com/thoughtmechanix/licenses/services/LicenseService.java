@@ -86,7 +86,7 @@ public class LicenseService {
      *         The license ID for looking up.
      * 
      * @param  clientType
-     *         The client type for looking up.
+     *         The client type for calling the organization service.
      * 
      * @return  The matched license record.
      */
@@ -96,10 +96,10 @@ public class LicenseService {
     	Organization org = retrieveOrgInfo(organizationId, clientType);
     	
     	return license
-    		.withOrganizationName( org.getName())
-    		.withContactName( org.getContactName())
-    		.withContactEmail( org.getContactEmail() )
-    		.withContactPhone( org.getContactPhone() )
+    		.withOrganizationName(org.getName())
+    		.withContactName(org.getContactName())
+    		.withContactEmail(org.getContactEmail() )
+    		.withContactPhone(org.getContactPhone() )
     		.withComment(config.getExampleProperty());
     }
        
