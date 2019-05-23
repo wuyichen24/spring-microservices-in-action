@@ -40,6 +40,7 @@ This microservices project is based on
    - [ZooKeeper](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-zookeeper)
    - [Kafka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-kafka)
    - [Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-redis)
+   - [Splunk](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Splunk)
 - [Technical Essentials](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Technical-Essentials)
    - [Autowired](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Autowired)
    - [SpringData JPA](https://github.com/wuyichen24/spring-microservices-in-action/wiki/SpringData-JPA)
