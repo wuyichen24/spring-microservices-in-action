@@ -72,3 +72,5 @@ This microservices project is based on
    - [Database](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Database)
    - [Message Queue](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Message-Queue)
    - [Cache](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Cache)
+   - [Log Server]()
+      - [Splunk](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Splunk-Server)
