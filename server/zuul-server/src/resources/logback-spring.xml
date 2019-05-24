@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>               <!-- load Spring default values -->
+    <springProperty scope="context" name="appName" source="spring.application.name"/>         <!-- load application name from application configuration -->
+	<appender name="SYSLOG-SPLUNK" class="ch.qos.logback.classic.net.SyslogAppender">         <!-- redirect the log to syslog endpoint in Splunk -->
+    	<syslogHost>127.0.0.1</syslogHost>
+    	<facility>SYSLOG</facility>
+    	<port>50000</port>
+    	<suffixPattern>${appName} [%thread] %logger %msg</suffixPattern>
+  	</appender>
+  	<appender name="SYSLOG-PAPERTRAIL" class="ch.qos.logback.classic.net.SyslogAppender">     <!-- redirect the log to syslog endpoint in Papertrail -->
+        <syslogHost>logs6.papertrailapp.com</syslogHost>
+        <facility>SYSLOG</facility>
+        <port>50395</port>
+        <suffixPattern>${appName} [%thread] %logger %msg</suffixPattern>
+    </appender>
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">                      <!-- redirect the log to console (standard output) -->
+    	<encoder>
+      		<pattern>${CONSOLE_LOG_PATTERN}</pattern>                                         <!-- use Spring default log pattern -->
+            <charset>utf8</charset>
+    	</encoder>
+  	</appender>
+  	<root level="INFO">
+    	<appender-ref ref="SYSLOG-SPLUNK" />
+    	<appender-ref ref="SYSLOG-PAPERTRAIL" />
+    	<appender-ref ref="STDOUT" />
+  	</root>
+</configuration>
