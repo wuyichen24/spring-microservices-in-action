@@ -13,6 +13,8 @@ There are the differences between this source code and the original source code:
 - Change the port of the organization service to 8060 to avoid the address conflict with the licensing service.
 - Change the port of the special routes service to 8040 to avoid the address conflict with the licensing service.
 - Change the port of the authentication service to 8901 to make it same with the example in the book.
+- Add the integration of Splunk for log aggregation locally (use both local Splunk and remote Papertrail).
+- Use the original functionality in Logback for sending the log to the log servers (Splunk & Papertrail) rather than the solution in the Book (use Logspout to direct the docker output to the log servers).
 - Add comments to make the code easy to read.
 
 ![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
@@ -33,6 +35,9 @@ This microservices project is based on
    - [MySQL](https://www.mysql.com/)
 - **Security**
    - [OAuth2](https://oauth.net/2/)
+- **Log**
+   - [Splunk](https://www.splunk.com/)
+   - [Papertrail](https://papertrailapp.com/)
 
 ## Content List in Wiki
 - [Overview](https://github.com/wuyichen24/spring-microservices-in-action/wiki)
