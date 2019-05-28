@@ -22,11 +22,11 @@ There are the differences between this source code and the original source code:
 This microservices project is based on 
 - **Core**
    - Spring Cloud with [Netflix OSS](https://netflix.github.io/)
-      - Netflix Eureka (service discovery)
-      - Netflix Zuul (service gateway)
-      - Netflix Hystrix (resiliency patterns)
-      - Netflix Feign (HTTP API client)
-      - Netflix Ribbon (service communication, load balancing)
+      - [Netflix Eureka (service discovery)](https://github.com/Netflix/eureka)
+      - [Netflix Zuul (service gateway)](https://github.com/Netflix/zuul)
+      - [Netflix Hystrix (resiliency patterns)](https://github.com/Netflix/hystrix)
+      - [Netflix Feign (HTTP API client)](https://github.com/OpenFeign/feign)
+      - [Netflix Ribbon (service communication, load balancing)](https://github.com/Netflix/ribbon)
 - **Message Queue**
    - [Apache Kafka](https://kafka.apache.org/) with [Apache ZooKeeper](https://zookeeper.apache.org/)
 - **Cache**
