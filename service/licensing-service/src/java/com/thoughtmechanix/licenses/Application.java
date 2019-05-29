@@ -17,6 +17,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -48,6 +50,11 @@ public class Application {
     
     private static final Logger   logger        = LoggerFactory.getLogger(Application.class);
 
+    @Bean
+	public Sampler defaultSampler() {
+		return new AlwaysSampler();
+	}
+    
     /**
      * Build the connection to Redis server.
      * 

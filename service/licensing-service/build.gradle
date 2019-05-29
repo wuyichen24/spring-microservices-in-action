@@ -31,6 +31,7 @@ dependencies {
 	
 	// Log tracing and aggregation (ch9)
 	compile group: 'org.springframework.cloud',          name: 'spring-cloud-starter-sleuth',       version: '1.3.5.RELEASE'
+	compile group: 'org.springframework.cloud',          name: 'spring-cloud-sleuth-zipkin',        version: '1.3.5.RELEASE'
 	
 
 	testCompile group: 'com.h2database', name: 'h2', version: '1.4.177'	
