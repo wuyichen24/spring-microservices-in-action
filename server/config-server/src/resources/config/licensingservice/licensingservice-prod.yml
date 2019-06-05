@@ -11,5 +11,4 @@ spring.datasource.validationQuery: "SELECT 1"
 spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.MySQL5Dialect"
 redis.server: "127.0.0.1"
 redis.port: "6379"
-spring.zipkin.baseUrl: "http://localhost:9411/"
-spring.sleuth.sampler.percentage: "1.0"
+

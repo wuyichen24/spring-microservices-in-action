@@ -1,12 +1,16 @@
 spring:
   application:
-    name: licensingservice        # name of service
+    name: licensingservice            # name of service
   profiles:
     active:
-      default                     # envrionment (default, dev, prod)
+      default                         # envrionment (default, dev, prod)
   zipkin:
-     baseUrl: http://localhost:9411/                # Send tracing information to Zipkin server
+     baseUrl: http://localhost:9411/  # send tracing information to Zipkin server
+     sender:
+       type: web                      # because spring-cloud-starter-stream-kafka is included in classpath, 
+                                      # so Spring will send the trace into Kafka automatically.
+                                      # if you still want to send the trace by http, you need to specify the way you want to send explicitly
   cloud:
     config:
-      enabled: true
-      uri: http://localhost:8888  # location of Spring Cloud Config server
+      enabled: true                   # retrieve config from config server
+      uri: http://localhost:8888      # location of config server
