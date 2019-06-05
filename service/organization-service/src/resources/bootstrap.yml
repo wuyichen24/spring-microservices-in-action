@@ -4,6 +4,8 @@ spring:
   profiles:
     active:
       default
+  zipkin:
+     baseUrl: http://localhost:9411/                # Send tracing information to Zipkin server
   cloud:
     config:
       enabled: true

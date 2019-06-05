@@ -62,8 +62,6 @@ import org.springframework.web.client.RestTemplate;
 public class Application {
     @Autowired
     private ServiceConfig serviceConfig;
-    
-    private static final Logger   logger        = LoggerFactory.getLogger(Application.class);
 
     @Bean
 	public Sampler defaultSampler() {
