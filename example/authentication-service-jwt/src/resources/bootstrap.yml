@@ -1,9 +1,12 @@
+## Setting spring
 spring:
   application:
-    name: authenticationservice   # Don't change to other name, otherwise it can not get the configuration from config server
+    name: authenticationservice   # name of service
+	                              # note: don't change it to other name, otherwise it can not get config from config server
   profiles:
     active:
-      default
+      default                     # envrionment (default, dev, prod)
   cloud:
     config:
-      enabled: true
+      enabled: true               # retrieve config from config server
+      uri: http://localhost:8888  # location of config server

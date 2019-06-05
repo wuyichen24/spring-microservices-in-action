@@ -1,19 +1,20 @@
-#Default port is 8761
-server:
-  port: 8761
-
+## Setting eureka
 eureka:
   client:
-    registerWithEureka: false            # Don't register with Eureka service
-    fetchRegistry: false                 # Don't cache registry information locally
+    registerWithEureka: false           # don't register eureka server
+    fetchRegistry: false                # don't cache registry information locally
   server:
-    waitTimeInMsWhenSyncEmpty: 5         # Initial time to wait before server takes requests
+    waitTimeInMsWhenSyncEmpty: 5        # initial time to wait before server takes requests
   serviceUrl:
-    defaultZone: http://localhost:8761
+    defaultZone: http://localhost:8761  # url for clients to register
 
-#Setting logging levels
+## Setting logging levels
 logging:
   level:
     com.netflix: WARN
     org.springframework.web: WARN
     com.thoughtmechanix: DEBUG
+
+## Setting server
+server:
+  port: 8761                            # port of service

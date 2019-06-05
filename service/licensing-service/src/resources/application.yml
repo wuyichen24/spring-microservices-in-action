@@ -1,36 +1,33 @@
-spring:
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: orgChangeTopic
-          content-type: application/json
-          group: licensingGroup
-        binder:
-          zkNodes: localhost
-          brokers: localhost
-  data:
-    jpa:
-      repositories:
-         enabled: true
-
-# security:
-#   oauth2:
-#    resource:
-#       userInfoUri: http://localhost:8901/auth/user
-
+## Setting eureka
 eureka:
   instance:
-    preferIpAddress: true                           # Register the IP of the service rather than the server name
+    preferIpAddress: true                         # register the ip of the service rather than the server name
   client:
-    registerWithEureka: true                        # Register the service with Eureka
-    fetchRegistry: true                             # Pull down a local copy of the registry
+    registerWithEureka: true                      # register the service with eureka
+    fetchRegistry: true                           # pull down a local copy of the registry
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
+      defaultZone: http://localhost:8761/eureka/  # location of eureka server
 
-# Letting logging levels
+## Setting logging levels
 logging:
   level:
     com.netflix: WARN
     org.springframework.web: WARN
     com.thoughtmechanix: DEBUG
+
+## Setting Message queue and database
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: orgChangeTopic             # message queue name
+          content-type: application/json          # type of message
+          group: licensingGroup                   # group of consumers
+        binder:
+          zkNodes: localhost                      # location of zookeeper
+          brokers: localhost                      # location of kafka (message broker)
+  data:
+    jpa:
+      repositories:
+         enabled: true                            # enable the spring data jpa (orm and dao)

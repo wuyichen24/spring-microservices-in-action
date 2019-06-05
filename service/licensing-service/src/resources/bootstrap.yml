@@ -1,3 +1,4 @@
+## Setting spring
 spring:
   application:
     name: licensingservice            # name of service

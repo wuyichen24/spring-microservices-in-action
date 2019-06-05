@@ -1,34 +1,40 @@
-spring:
-  application:
-    name: zuulservice
-  profiles:
-    active:
-      default
-  zipkin:
-     baseUrl: http://localhost:9411/                # Send tracing information to Zipkin server
-  cloud:
-    config:
-      enabled: true
-
-server:
-  port: 5555
-
-# Letting logging levels
-logging:
-    level:
-      com.netflix: WARN
-      org.springframework.web: WARN
-      com.thoughtmechanix: DEBUG
-
-# Let Zuul server talk to Eureka server
+## Setting eureka
 eureka:
   instance:
-    preferIpAddress: true                           # Register the IP of the service rather than the server name
+    preferIpAddress: true                         # register the ip of the service rather than the server name
   client:
-    registerWithEureka: true                        # Register the service with Eureka
-    fetchRegistry: true                             # Pull down a local copy of the registry
+    registerWithEureka: true                      # register the service with eureka
+    fetchRegistry: true                           # pull down a local copy of the registry
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/    # Location of the Eureka Service
+      defaultZone: http://localhost:8761/eureka/  # location of eureka server
+
+## Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG
+
+## Setting server
+server:
+  port: 5555                                      # port of service
+
+## Setting signing
+signing:
+  key: 345345fsdfsf5345                           # symmetric encryption key
+
+## Setting Spring
+spring:
+  application:
+    name: zuulservice                             # name of service
+  profiles:
+    active:
+      default                                     # envrionment (default, dev, prod)
+  zipkin:
+     baseUrl: http://localhost:9411/              # send tracing information to Zipkin server
+  cloud:
+    config:
+      enabled: true                               # retrieve config from config server
 
 # Zuul configuration
 #zuul:
@@ -38,5 +44,4 @@ eureka:
     #organizationservice: /organization/**           # Customize the route to organization service ("/organizationservice/**" =>> "/organization/**"")
     #licensingservice: /licensing/**                 # Customize the route to licensing service    ("/licensingservice/**"    =>> "/licensing/**"    )
 
-signing:
-  key: 345345fsdfsf5345
+

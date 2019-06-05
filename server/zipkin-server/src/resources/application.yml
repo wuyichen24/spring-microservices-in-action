@@ -1,10 +1,10 @@
-# Default port is 9411
-server:
-  port: 9411
-
-# Setting logging levels
+## Setting logging levels
 logging:
   level:
     com.netflix: WARN
     org.springframework.web: WARN
     com.thoughtmechanix: DEBUG
+
+## Setting server
+server:
+  port: 9411                       # The port of service

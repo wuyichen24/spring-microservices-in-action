@@ -1,3 +1,31 @@
+## Setting eureka
+eureka:
+  instance:
+    preferIpAddress: true                           # Register the IP of the service rather than the server name
+  client:
+    registerWithEureka: true                        # Register the service with Eureka
+    fetchRegistry: true                             # Pull down a local copy of the registry
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+
+## Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG
+
+## Setting security
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/auth/user  # url to validate the access token
+
+## Setting server
+server:
+  port: 8060                                        # port of service
+
+## Setting Message queue
 spring:
   cloud:
     stream:
@@ -9,31 +37,3 @@ spring:
           binder:
              zkNodes: localhost                     # The location of ZooKeeper
              brokers: localhost                     # The location of message broker (Kafka)
-
-# The port of organization service (make it different with licensing service)
-server:
-  port: 8060
-
-#Setting the logging levels for the service
-logging:
-  level:
-    com.netflix: WARN
-    org.springframework.web: WARN
-    com.thoughtmechanix: DEBUG
-
-
-eureka:
-  instance:
-    preferIpAddress: true                           # Register the IP of the service rather than the server name
-  client:
-    registerWithEureka: true                        # Register the service with Eureka
-    fetchRegistry: true                             # Pull down a local copy of the registry
-    serviceUrl:
-        defaultZone: http://localhost:8761/eureka/
-        
-security:
-  oauth2:
-    resource:
-      userInfoUri: http://localhost:8901/auth/user
-
-        

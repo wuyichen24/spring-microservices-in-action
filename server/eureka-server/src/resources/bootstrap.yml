@@ -1,3 +1,4 @@
+## Setting spring
 spring:
   application:
-    name: eurekaserver
+    name: eurekaserver  # name of service
