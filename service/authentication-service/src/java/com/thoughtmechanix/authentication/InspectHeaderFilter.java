@@ -15,6 +15,8 @@
  */
 package com.thoughtmechanix.authentication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
@@ -24,15 +26,25 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
 
+/**
+ * The filter for inspecting the header of incoming requests.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/06/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Component
 public class InspectHeaderFilter implements Filter {
+	private static final Logger logger = LoggerFactory.getLogger(InspectHeaderFilter.class);
+	
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        System.out.println("I AM HITTING THE AUTH SERVER: " + httpServletRequest.getHeader("Authorization"));
-
+        logger.info("I AM HITTING THE AUTH SERVER: " + httpServletRequest.getHeader("Authorization"));  // any service hit the authentication service will print this line.
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
 
