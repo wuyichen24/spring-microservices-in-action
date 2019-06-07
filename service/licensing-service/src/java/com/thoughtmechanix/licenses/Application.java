@@ -63,6 +63,15 @@ public class Application {
     @Autowired
     private ServiceConfig serviceConfig;
 
+    /**
+     * Replace the default Sampler by {@code AlwaysSampler}.
+     * 
+     * <p>The purpose of this function is to send all the tracing data to 
+     * the Zipkin server, otherwise only 10% tracing data will be sent.
+     * 
+     * @return  The {@code AlwaysSampler} object to replace the default 
+     *          Sampler.
+     */
     @Bean
 	public Sampler defaultSampler() {
 		return new AlwaysSampler();
