@@ -19,7 +19,7 @@ There are the differences between this source code and the original source code:
 - Use the original functionality in Logback for sending the log to the log servers (Splunk & Papertrail) rather than the solution in the Book (use Logspout to direct the docker output to the log servers).
 - Add comments to make the code easy to read.
 
-![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
+![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure/whole_structure.png)
 
 This microservices project is based on 
 - **Core**
