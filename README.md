@@ -64,6 +64,7 @@ This microservices project is based on
    - [Integrate with Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Redis)
    - [Tune Logging](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Tune-Logging)
    - [Log Aggregation](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Log-Aggregation)
+   - [Send Trace to Zipkin](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Send-Trace-to-Zipkin)
 - [Core Application Logic](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Core-Application-Logic)
 - [Components](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Components)
    - [Servers]()
