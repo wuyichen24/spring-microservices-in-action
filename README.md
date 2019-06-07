@@ -40,6 +40,8 @@ This microservices project is based on
 - **Log**
    - [Splunk](https://www.splunk.com/)
    - [Papertrail](https://papertrailapp.com/)
+- **Trace**
+   - [Apache Zipkin](https://zipkin.apache.org/)
 
 ## Content List in Wiki
 - [Overview](https://github.com/wuyichen24/spring-microservices-in-action/wiki)
