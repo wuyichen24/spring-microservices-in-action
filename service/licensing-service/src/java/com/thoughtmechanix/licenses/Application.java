@@ -21,8 +21,6 @@ import java.util.List;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.utils.UserContextInterceptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -63,6 +61,14 @@ public class Application {
     @Autowired
     private ServiceConfig serviceConfig;
 
+    /**
+     * Overload the default sampler.
+     * 
+     * <p>Overload the default sampler by the always sampler for sending all 
+     * the trace data to Zipkin server.
+     * 
+     * @return The object of {@code AlwaysSampler}.
+     */
     @Bean
 	public Sampler defaultSampler() {
 		return new AlwaysSampler();
@@ -94,6 +100,12 @@ public class Application {
         return template;
     }
     
+    
+    /**
+     * Get a {@code RestTemplate}.
+     * 
+     * @return  The object of {@code RestTemplate}.
+     */
     @LoadBalanced                          // This annotation tells Spring Cloud to create a Ribbon backed RestTemplate class.
     @Bean
     public RestTemplate getRestTemplate(){

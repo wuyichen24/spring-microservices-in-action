@@ -44,6 +44,14 @@ import javax.servlet.Filter;
 @EnableResourceServer                           // This is the protected service by OAuth2
 @EnableBinding(Source.class)
 public class Application {
+	/**
+     * Overload the default sampler.
+     * 
+     * <p>Overload the default sampler by the always sampler for sending all 
+     * the trace data to Zipkin server.
+     * 
+     * @return The object of {@code AlwaysSampler}.
+     */
 	@Bean
 	public Sampler defaultSampler() {
 		return new AlwaysSampler();

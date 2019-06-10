@@ -41,6 +41,14 @@ public class ZuulServerApplication {
         return new RestTemplate();
     }
 
+    /**
+     * Overload the default sampler.
+     * 
+     * <p>Overload the default sampler by the always sampler for sending all 
+     * the trace data to Zipkin server.
+     * 
+     * @return The object of {@code AlwaysSampler}.
+     */
     @Bean
     public Sampler defaultSampler() {
         return new AlwaysSampler();

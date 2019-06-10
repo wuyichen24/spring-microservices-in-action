@@ -31,6 +31,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @FeignClient("organizationservice")
 public interface OrganizationFeignClient {
+	/**
+     * Get the matched organization record by the organization ID by calling 
+     * the organization service.
+     * 
+     * @param  organizationId
+     *         The organization ID which is being looking for.
+     *         
+     * @return The matched organization record.
+     */
     @RequestMapping(method= RequestMethod.GET, value="/v1/organizations/{organizationId}", consumes="application/json")
     Organization getOrganization(@PathVariable("organizationId") String organizationId);
 }

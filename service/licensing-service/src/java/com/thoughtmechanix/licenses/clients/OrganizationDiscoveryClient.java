@@ -51,6 +51,15 @@ public class OrganizationDiscoveryClient {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    /**
+     * Get the matched organization record by the organization ID by calling 
+     * the organization service.
+     * 
+     * @param  organizationId
+     *         The organization ID which is being looking for.
+     *         
+     * @return  The matched organization record.
+     */
     public Organization getOrganization(String organizationId) {
         RestTemplate restTemplate = new RestTemplate();
         
@@ -62,8 +71,8 @@ public class OrganizationDiscoveryClient {
         }
         
         // Get the URL of the first instance in the instance list.
-        String serviceUri = String.format("%s/v1/organizations/%s",instances.get(0).getUri().toString(), organizationId);  // The IP address of the instance you call is NOT abstracted
-        logger.debug("The Service URL: " + serviceUri);
+        String serviceUri = String.format("%s/v1/organizations/%s",instances.get(0).getUri().toString(), organizationId);          // The IP address of the instance you call is NOT abstracted
+        logger.debug("The Service URL: {}", serviceUri);
 
         // Uses a standard Spring REST Template class to call the service
         ResponseEntity< Organization > restExchange = restTemplate.exchange(serviceUri, HttpMethod.GET, null, Organization.class, organizationId);

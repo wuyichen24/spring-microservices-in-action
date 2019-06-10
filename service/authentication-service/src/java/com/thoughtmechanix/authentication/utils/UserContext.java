@@ -17,6 +17,14 @@ package com.thoughtmechanix.authentication.utils;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * The class to hold the HTTP header values.
+ * 
+ * @author  Wuyi Chen
+ * @date    03/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Component
 public class UserContext {
     public static final String CORRELATION_ID = "tmx-correlation-id";
@@ -31,13 +39,10 @@ public class UserContext {
 
     public static String getCorrelationId()           { return correlationId.get(); }
     public static void   setCorrelationId(String cid) { correlationId.set(cid);     }
-
     public static String getAuthToken()               { return authToken.get();     }
     public static void   setAuthToken(String aToken)  { authToken.set(aToken);      }
-
     public static String getUserId()                  { return userId.get();        }
     public static void   setUserId(String aUser)      { userId.set(aUser);          }
-
     public static String getOrgId()                   { return orgId.get();         }
     public static void   setOrgId(String aOrg)        { orgId.set(aOrg);            }
 }

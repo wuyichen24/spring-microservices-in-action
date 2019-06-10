@@ -44,7 +44,7 @@ public class InspectHeaderFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        logger.info("I AM HITTING THE AUTH SERVER: " + httpServletRequest.getHeader("Authorization"));  // any service hit the authentication service will print this line.
+        logger.info("I AM HITTING THE AUTH SERVER: {}", httpServletRequest.getHeader("Authorization"));  // any service hit the authentication service will print this line.
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
 

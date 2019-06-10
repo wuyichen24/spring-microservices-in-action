@@ -21,6 +21,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+/**
+ * The entity class for user organization.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/10/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Entity
 @Table(name = "user_orgs")
 public class UserOrganization implements Serializable {
@@ -33,19 +41,8 @@ public class UserOrganization implements Serializable {
     @Column(name = "user_name", nullable = false)
     String userName;
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
-    }
+    public String getUserName()                            { return userName;                      }
+    public void   setUserName(String userName)             { this.userName = userName;             }
+    public String getOrganizationId()                      { return organizationId;                }
+    public void   setOrganizationId(String organizationId) { this.organizationId = organizationId; }
 }

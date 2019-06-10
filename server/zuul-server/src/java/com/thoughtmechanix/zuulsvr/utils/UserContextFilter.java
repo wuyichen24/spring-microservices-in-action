@@ -53,7 +53,7 @@ import java.io.IOException;
  * </ul>
  *
  * @author  Wuyi Chen
- * @date    03/25/2019
+ * @date    03/14/2019
  * @version 1.0
  * @since   1.0
  */
@@ -65,10 +65,10 @@ public class UserContextFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-        UserContextHolder.getContext().setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));  // This filter class retrieves the correlation ID from the header and sets the value on the UserContext class.
-        UserContextHolder.getContext().setUserId(httpServletRequest.getHeader(UserContext.USER_ID));
-        UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
-        UserContextHolder.getContext().setOrgId(httpServletRequest.getHeader(UserContext.ORG_ID));
+        UserContextHolder.getContext().setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));
+        UserContextHolder.getContext().setUserId(       httpServletRequest.getHeader(UserContext.USER_ID));
+        UserContextHolder.getContext().setAuthToken(    httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
+        UserContextHolder.getContext().setOrgId(        httpServletRequest.getHeader(UserContext.ORG_ID));
 
         logger.debug("UserContextFilter Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 

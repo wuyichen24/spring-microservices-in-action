@@ -41,7 +41,7 @@ import java.util.concurrent.Callable;
  */
 public final class DelegatingUserContextCallable<V> implements Callable<V> {
     private final Callable<V> delegate;
-    private UserContext originalUserContext;
+    private       UserContext originalUserContext;
 
     /**
      * Construct a {@code DelegatingUserContextCallable}.
@@ -54,7 +54,7 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
      *         The {@code UserContext} coming in from the parent thread.
      */
     public DelegatingUserContextCallable(Callable<V> delegate, UserContext userContext) {
-        this.delegate = delegate;
+        this.delegate            = delegate;
         this.originalUserContext = userContext;
     }
 
@@ -70,8 +70,7 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 
         try {
             return delegate.call();                         // Invoke the method annotated by the @HystrixCommand annotation.
-        }
-        finally {
+        } finally {
             this.originalUserContext = null;
         }
     }

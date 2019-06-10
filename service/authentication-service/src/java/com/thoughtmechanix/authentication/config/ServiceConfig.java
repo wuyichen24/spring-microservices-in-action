@@ -19,6 +19,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+/**
+ * The config class for authentication service.
+ * 
+ * <p>The fields in this class will map to the configuration file store in the 
+ * config server: 
+ * <ul>
+ *   <li>config.authentication/authenticationservice.yml
+ *   <li>config.authentication/authenticationservice-dev.yml
+ *   <li>config.authentication/authenticationservice-prod.yml
+ * </ul>
+ * 
+ * @author  Wuyi Chen
+ * @date    06/06/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Component
 @Configuration
 public class ServiceConfig {

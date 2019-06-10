@@ -27,9 +27,24 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
+/**
+ * The class to define a customized concurrency strategy.
+ * 
+ * @author  Wuyi Chen
+ * @date    03/17/2019
+ * @version 1.0
+ * @since   1.0
+ */
+public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{   // Extend the base HystrixConcurrencyStrategy Class
     private HystrixConcurrencyStrategy existingConcurrencyStrategy;
 
+    /**
+     * Construct a {@code ThreadLocalAwareStrategy}.
+     * 
+     * @param  existingConcurrencyStrategy
+     *         The existing {@code HystrixConcurrencyStrategy} defined by 
+     *         Spring Cloud.
+     */
     public ThreadLocalAwareStrategy(HystrixConcurrencyStrategy existingConcurrencyStrategy) {
         this.existingConcurrencyStrategy = existingConcurrencyStrategy;
     }
@@ -37,7 +52,7 @@ public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
     @Override
     public BlockingQueue<Runnable> getBlockingQueue(int maxQueueSize) {
         return existingConcurrencyStrategy != null
-                ? existingConcurrencyStrategy.getBlockingQueue(maxQueueSize)
+                ? existingConcurrencyStrategy.getBlockingQueue(maxQueueSize)   // Call the existing concurrency strategy's method
                 : super.getBlockingQueue(maxQueueSize);
     }
 
@@ -45,7 +60,7 @@ public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
     public <T> HystrixRequestVariable<T> getRequestVariable(
             HystrixRequestVariableLifecycle<T> rv) {
         return existingConcurrencyStrategy != null
-                ? existingConcurrencyStrategy.getRequestVariable(rv)
+                ? existingConcurrencyStrategy.getRequestVariable(rv)           // Call the existing concurrency strategy's method
                 : super.getRequestVariable(rv);
     }
 
@@ -63,7 +78,8 @@ public class ThreadLocalAwareStrategy extends HystrixConcurrencyStrategy{
     @Override
     public <T> Callable<T> wrapCallable(Callable<T> callable) {
         return existingConcurrencyStrategy != null
-                ? existingConcurrencyStrategy.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()))
+                ? existingConcurrencyStrategy
+                .wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()))    // Inject your Callable implementation that will set the UserContext
                 : super.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
     }
 }
