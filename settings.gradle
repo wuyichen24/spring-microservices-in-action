@@ -1,6 +1,6 @@
 rootProject.name = 'spring-microservices-in-action'
 
-include 'example:authentication-service-jwt'
+//include 'example:authentication-service-jwt'
 
 include 'server:config-server'
 include 'server:eureka-server'
