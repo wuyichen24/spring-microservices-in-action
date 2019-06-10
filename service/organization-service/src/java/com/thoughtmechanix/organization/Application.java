@@ -45,12 +45,13 @@ import javax.servlet.Filter;
 @EnableBinding(Source.class)
 public class Application {
 	/**
-     * Overload the default sampler.
+     * Replace the default Sampler by {@code AlwaysSampler}.
      * 
-     * <p>Overload the default sampler by the always sampler for sending all 
-     * the trace data to Zipkin server.
+     * <p>The purpose of this function is to send all the tracing data to 
+     * the Zipkin server, otherwise only 10% tracing data will be sent.
      * 
-     * @return The object of {@code AlwaysSampler}.
+     * @return  The {@code AlwaysSampler} object to replace the default 
+     *          Sampler.
      */
 	@Bean
 	public Sampler defaultSampler() {

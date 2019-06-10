@@ -1,8 +1,9 @@
 # spring-microservices-in-action
 
+[![Build Status](https://travis-ci.org/wuyichen24/spring-microservices-in-action.svg?branch=master)](https://travis-ci.org/wuyichen24/spring-microservices-in-action)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0) 
 
-This repository contains the source code of the book "[Spring Microservices in Action (John Carnell)](https://www.manning.com/books/spring-microservices-in-action)".
+This repository contains the source code of the book "[Spring Microservices in Action (John Carnell)](https://www.manning.com/books/spring-microservices-in-action)" and the personal summary of technical essentials about Spring Boot for microservices.
 
 ![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/Carnell-Spring-HI.png)
 
@@ -19,7 +20,7 @@ There are the differences between this source code and the original source code:
 - Use the original functionality in Logback for sending the log to the log servers (Splunk & Papertrail) rather than the solution in the Book (use Logspout to direct the docker output to the log servers).
 - Add comments to make the code easy to read.
 
-![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure.png)
+![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure/whole_structure.png)
 
 This microservices project is based on 
 - **Core**
@@ -40,6 +41,8 @@ This microservices project is based on
 - **Log**
    - [Splunk](https://www.splunk.com/)
    - [Papertrail](https://papertrailapp.com/)
+- **Trace**
+   - [Apache Zipkin](https://zipkin.apache.org/)
 
 ## Content List in Wiki
 - [Overview](https://github.com/wuyichen24/spring-microservices-in-action/wiki)
@@ -64,6 +67,7 @@ This microservices project is based on
    - [Integrate with Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Redis)
    - [Tune Logging](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Tune-Logging)
    - [Log Aggregation](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Log-Aggregation)
+   - [Send Trace to Zipkin](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Send-Trace-to-Zipkin)
 - [Core Application Logic](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Core-Application-Logic)
 - [Components](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Components)
    - [Servers]()

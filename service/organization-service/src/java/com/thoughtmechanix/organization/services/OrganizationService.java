@@ -19,6 +19,8 @@ import com.thoughtmechanix.organization.events.source.SimpleSourceBean;
 import com.thoughtmechanix.organization.model.Organization;
 import com.thoughtmechanix.organization.repository.OrganizationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -34,10 +36,13 @@ import java.util.UUID;
 @Service
 public class OrganizationService {
     @Autowired
-    private OrganizationRepository orgRepository;                    // For database operations
+    private OrganizationRepository orgRepository;                    // for database operations
 
     @Autowired
-    private SimpleSourceBean       simpleSourceBean;                 // For publishing organization change event to the message queue
+    private Tracer tracer;                                           // for sending custom span to zipkin server
+    
+    @Autowired
+    private SimpleSourceBean       simpleSourceBean;                 // for publishing organization change event to the message queue
 
     /**
      * Query an organization by the organization ID.
@@ -48,7 +53,15 @@ public class OrganizationService {
      * @return  The matched organization record.
      */
     public Organization getOrg(String orgId) {
-        return orgRepository.findById(orgId);
+    	Span newSpan = tracer.createSpan("getOrgDBCall");            // create a new span for send custom span to zipkin server
+    	
+    	try {
+    		return orgRepository.findById(orgId);
+    	} finally {
+    		newSpan.tag("peer.service", "mysql");
+    		newSpan.logEvent(Span.CLIENT_RECV);
+    		tracer.close(newSpan);
+    	}
     }
 
     /**
