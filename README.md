@@ -1,5 +1,6 @@
 # spring-microservices-in-action
 
+[![Build Status](https://travis-ci.org/wuyichen24/spring-microservices-in-action.svg?branch=master)](https://travis-ci.org/wuyichen24/spring-microservices-in-action)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0) 
 
 This repository contains the source code of the book "[Spring Microservices in Action (John Carnell)](https://www.manning.com/books/spring-microservices-in-action)" and the personal summary of technical essentials about Spring Boot for microservices.
