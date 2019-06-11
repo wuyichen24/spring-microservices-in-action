@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * The interface for customizing queries to license table
+ * The interface for customizing queries to license table.
  * 
  * <p>This interface is extending {@code CrudRepository}, so you MUST NOT 
  * implement the methods in this interface. The Spring JPA repository will 

@@ -18,7 +18,15 @@ package com.thoughtmechanix.specialroutes.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * The exception of not finding the route for a certain service.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/10/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class NoRouteFound extends RuntimeException{
+public class NoRouteFoundException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 }

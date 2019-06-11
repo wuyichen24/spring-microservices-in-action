@@ -23,15 +23,31 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * The controller class for defining available calls to the API endpoint of 
+ * specialroutes service.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/10/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @RestController
 @RequestMapping(value="v1/route/")
 public class SpecialRoutesServiceController {
     @Autowired
     AbTestingRouteService routeService;
 
+    /**
+     * Provide an alternate endpoint of a service.
+     * 
+     * @param  serviceName
+     *         The name of the service.
+     * 
+     * @return  The alternate endpoint of the service.
+     */
     @RequestMapping(value = "abtesting/{serviceName}", method = RequestMethod.GET)
     public AbTestingRoute abstestings(@PathVariable("serviceName") String serviceName) {
         return routeService.getRoute( serviceName);
     }
-
 }

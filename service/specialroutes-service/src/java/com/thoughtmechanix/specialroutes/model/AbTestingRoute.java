@@ -20,6 +20,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The entity class for AB testing route.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/10/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Entity
 @Table(name = "abtesting")
 public class AbTestingRoute {
@@ -36,35 +44,12 @@ public class AbTestingRoute {
     @Column(name = "weight", nullable = false)
     Integer weight;
 
-    public String getActive() {
-        return active;
-    }
-
-    public void setActive(String active) {
-        this.active = active;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getEndpoint() {
-        return endpoint;
-    }
-
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
+    public String  getActive()                        { return active;                  }
+    public void    setActive(String active)           { this.active = active;           }
+    public String  getServiceName()                   { return serviceName;             }
+    public void    setServiceName(String serviceName) { this.serviceName = serviceName; }
+    public String  getEndpoint()                      { return endpoint;                }
+    public void    setEndpoint(String endpoint)       { this.endpoint = endpoint;       }
+    public Integer getWeight()                        { return weight;                  }
+    public void    setWeight(Integer weight)          { this.weight = weight;           }
 }

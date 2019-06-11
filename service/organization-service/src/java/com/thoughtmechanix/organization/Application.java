@@ -23,10 +23,7 @@ import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
-//import org.springframework.cloud.stream.annotation.EnableBinding;
-//import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
-//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import javax.servlet.Filter;
@@ -35,7 +32,7 @@ import javax.servlet.Filter;
  * The bootstrap class for the organization service.
  * 
  * @author  Wuyi Chen
- * @date    04/08/2019
+ * @date    06/10/2019
  * @version 1.0
  * @since   1.0
  */

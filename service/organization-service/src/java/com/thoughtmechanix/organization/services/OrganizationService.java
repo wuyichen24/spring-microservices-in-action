@@ -39,7 +39,7 @@ public class OrganizationService {
     private OrganizationRepository orgRepository;                    // for database operations
 
     @Autowired
-    private Tracer tracer;                                           // for sending custom span to zipkin server
+    private Tracer                 tracer;                           // for sending custom span to zipkin server
     
     @Autowired
     private SimpleSourceBean       simpleSourceBean;                 // for publishing organization change event to the message queue

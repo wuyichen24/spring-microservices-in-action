@@ -24,10 +24,23 @@ import org.springframework.context.annotation.Bean;
 
 import javax.servlet.Filter;
 
+/**
+ * The bootstrap class for the specialroutes service.
+ * 
+ * @author  Wuyi Chen
+ * @date    04/08/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @EnableCircuitBreaker
 public class Application {
+	/**
+     * Get a {@code UserContextFilter}.
+     * 
+     * @return  The object of {@code UserContextFilter}.
+     */
     @Bean
     public Filter userContextFilter() {
         UserContextFilter userContextFilter = new UserContextFilter();

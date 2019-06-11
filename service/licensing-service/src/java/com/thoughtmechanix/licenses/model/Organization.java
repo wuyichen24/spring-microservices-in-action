@@ -25,9 +25,8 @@ import java.io.Serializable;
  * @version 1.0
  * @since   1.0
  */
-public class Organization implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+public class Organization implements Serializable {	
+	// Don't add serialVersionUID, it will cause an error when deserialize the organization record from redis.
 	String id;
     String name;
     String contactName;

@@ -19,7 +19,32 @@ import com.thoughtmechanix.specialroutes.model.AbTestingRoute;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * The interface for customizing queries to abtestingroute table.
+ * 
+ * <p>This interface is extending {@code CrudRepository}, so you MUST NOT 
+ * implement the methods in this interface. The Spring JPA repository will 
+ * automatically implement the basic functions (save, delete, findOne, etc.) 
+ * in the parent {@code CrudRepository} interface and also implements your 
+ * customized query functions defined in this interface based on the method 
+ * names.
+ * 
+ * @see <a href="http://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods.query-creation">QueryCreation</a>
+ * 
+ * @author  Wuyi Chen
+ * @date    02/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Repository
 public interface AbTestingRouteRepository extends CrudRepository<AbTestingRoute,String>  {
+    /**
+     * Find a {@code AbTestingRoute} record based on a service name.
+     * 
+     * @param  serviceName
+     *         The name of the service.
+     * 
+     * @return  The matched {@code AbTestingRoute} record.
+     */
     public AbTestingRoute findByServiceName(String serviceName);
 }

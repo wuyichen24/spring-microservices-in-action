@@ -15,35 +15,69 @@
  */
 package com.thoughtmechanix.specialroutes.services;
 
-import com.thoughtmechanix.specialroutes.exception.NoRouteFound;
+import com.thoughtmechanix.specialroutes.exception.NoRouteFoundException;
 import com.thoughtmechanix.specialroutes.model.AbTestingRoute;
 import com.thoughtmechanix.specialroutes.repository.AbTestingRouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The AB testing route service for processing operations on alternate routes.
+ * 
+ * @author  Wuyi Chen
+ * @date    02/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Service
 public class AbTestingRouteService {
     @Autowired
     private AbTestingRouteRepository abTestingRouteRepository;
 
+    /**
+     * Get an alternate route for a service.
+     * 
+     * @param  serviceName
+     *         The name of the service.
+     * 
+     * @return  The alternate route for the service.
+     */
     public AbTestingRoute getRoute(String serviceName) {
         AbTestingRoute route = abTestingRouteRepository.findByServiceName(serviceName);
 
-        if (route==null){
-            throw new NoRouteFound();
+        if (route == null){
+            throw new NoRouteFoundException();
         }
 
         return route;
     }
 
+    /**
+     * Insert an alternate route for a service.
+     * 
+     * @param  route
+     *         The alternate route record needs to be inserted.
+     */
     public void saveAbTestingRoute(AbTestingRoute route){
         abTestingRouteRepository.save(route);
     }
 
+    /**
+     * Update an alternate route for a service.
+     * 
+     * @param  route
+     *         The alternate route needs to be updated.
+     */
     public void updateRouteAbTestingRoute(AbTestingRoute route){
         abTestingRouteRepository.save(route);
     }
 
+    /**
+     * Delete an alternate route for a service.
+     * 
+     * @param  route
+     *         The alternate route needs to be deleted.
+     */
     public void deleteRoute(AbTestingRoute route){
         abTestingRouteRepository.delete(route.getServiceName());
     }
