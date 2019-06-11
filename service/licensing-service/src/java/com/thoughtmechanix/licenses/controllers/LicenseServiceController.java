@@ -31,8 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.List;
 
 /**
- * The controller class for defining available calls to the API endpoint of 
- * organization service.
+ * The controller class of licensing service.
  * 
  * @author  Wuyi Chen
  * @date    05/08/2019

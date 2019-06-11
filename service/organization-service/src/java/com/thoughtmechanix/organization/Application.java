@@ -58,6 +58,11 @@ public class Application {
 		return new AlwaysSampler();
 	}
 	
+    /**
+     * Get a {@code UserContextFilter}.
+     * 
+     * @return  The object of {@code UserContextFilter}.
+     */
     @Bean
     public Filter userContextFilter() {
         UserContextFilter userContextFilter = new UserContextFilter();

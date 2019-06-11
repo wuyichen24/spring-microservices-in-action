@@ -23,12 +23,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * The controller class for discovery service.
+ * 
+ * @author  Wuyi Chen
+ * @date    06/10/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @RestController
 @RequestMapping(value="v1/tools")
-public class ToolsController {
+public class DiscoveryServiceController {
     @Autowired
     private DiscoveryService discoveryService;
 
+    /**
+     * Get list of service names which is registered with the eureka server.
+     * 
+     * @return  The list of service names.
+     */
     @RequestMapping(value = "/eureka/services", method = RequestMethod.GET)
     public List<String> getEurekaServices() {
         return discoveryService.getEurekaServices();

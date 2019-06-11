@@ -16,7 +16,7 @@
 package com.thoughtmechanix.licenses.events.models;
 
 /**
- * The event POJO for any organization change.
+ * The organization change event.
  * 
  * @author  Wuyi Chen
  * @date    05/05/2019

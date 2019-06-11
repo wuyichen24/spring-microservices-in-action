@@ -22,7 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * The entity class for license
+ * The entity class for license.
  * 
  * @author  Wuyi Chen
  * @date    02/14/2019

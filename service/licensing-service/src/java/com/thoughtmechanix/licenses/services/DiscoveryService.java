@@ -23,22 +23,36 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The discovery service for the eureka server's service discovery.
+ * 
+ * @author  Wuyi Chen
+ * @date    02/14/2019
+ * @version 1.0
+ * @since   1.0
+ */
 @Service
 public class DiscoveryService {
-//    @Autowired
-//    RestTemplate restTemplate;
-//
-//    @Autowired
-//    private DiscoveryClient discoveryClient;
+    @Autowired
+    RestTemplate restTemplate;
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    /**
+     * Get a list of the name of the services which is registered with eureka 
+     * server.
+     * 
+     * @return  The list of the name of the services.
+     */
     public List<String> getEurekaServices(){
-       List<String> services = new ArrayList<>();
+    	List<String> services = new ArrayList<>();
 
-//        discoveryClient.getServices().forEach(serviceName -> {
-//            discoveryClient.getInstances(serviceName).forEach(instance-> {
-//                services.add( String.format("%s:%s",serviceName,instance.getUri()));
-//            });
-//        });
+        discoveryClient.getServices().forEach(serviceName -> {
+            discoveryClient.getInstances(serviceName).forEach(instance-> {
+                services.add( String.format("%s:%s",serviceName,instance.getUri()));
+            });
+        });
 
         return services;
     }

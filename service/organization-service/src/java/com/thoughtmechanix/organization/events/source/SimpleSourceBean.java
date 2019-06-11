@@ -46,6 +46,15 @@ public class SimpleSourceBean {
         this.source = source;
     }
 
+    /**
+     * Publish an organization change event into Kafka message queue.
+     * 
+     * @param  action
+     *         The action of the change (Add, Update or Delete).
+     *         
+     * @param  orgId
+     *         The organization ID.
+     */
     public void publishOrgChange(String action, String orgId){
        logger.debug("Sending Kafka message {} for Organization Id: {}", action, orgId);
         OrganizationChangeModel change =  new OrganizationChangeModel(         // This change object will be sent

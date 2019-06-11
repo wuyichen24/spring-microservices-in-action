@@ -45,6 +45,13 @@ public class OrganizationChangeHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(OrganizationChangeHandler.class);
 
+    /**
+     * Log the change event received from the organization service and update 
+     * the Redis cache.
+     * 
+     * @param  orgChange
+     *         The organization change event.
+     */
     @StreamListener(Sink.INPUT)
     public void loggerSink(OrganizationChangeModel orgChange) {
     	logger.info("Received an event for organization id {}", orgChange.getOrganizationId());
@@ -67,7 +74,6 @@ public class OrganizationChangeHandler {
             default:
                 logger.error("Received an UNKNOWN event from the organization service of type {}", orgChange.getType());
                 break;
-
         }
     }
 }

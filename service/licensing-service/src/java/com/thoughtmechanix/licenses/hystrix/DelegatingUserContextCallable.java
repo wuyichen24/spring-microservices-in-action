@@ -75,6 +75,18 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
         }
     }
 
+    /**
+     * Create a {@code DelegatingUserContextCallable}.
+     * 
+     * @param  delegate
+     *         The original Callable class that will invoke your Hystrix 
+     *         protected code.
+     *         
+     * @param  userContext
+     *         The {@code UserContext} coming in from the parent thread.
+     *         
+     * @return  The object of {@code DelegatingUserContextCallable}.
+     */
     public static <V> Callable<V> create(Callable<V> delegate, UserContext userContext) {
         return new DelegatingUserContextCallable<V>(delegate, userContext);
     }
