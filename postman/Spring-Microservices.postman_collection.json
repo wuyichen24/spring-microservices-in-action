@@ -6,153 +6,139 @@
 	},
 	"item": [
 		{
-			"name": "ConfigServer",
+			"name": "ConfigServer [CS]",
 			"description": null,
 			"item": [
 				{
-					"name": "Basic",
-					"description": null,
-					"item": [
-						{
-							"name": "Get_Metrics_From_Config_Server",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://localhost:8888/metrics",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"metrics"
-									]
-								}
-							},
-							"response": []
+					"name": "[CS1-LS-def] - Read licensing service default config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"name": "Check_Health_From_Config_Server",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://localhost:8888/health",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"health"
-									]
-								},
-								"description": "Health Check"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"default"
+							]
+						},
+						"description": "Get licensing service configuration (default)"
+					},
+					"response": []
 				},
 				{
-					"name": "Config",
-					"description": null,
-					"item": [
-						{
-							"name": "Get_Licensing_Service_Config_From_Config_Server (Default)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://localhost:8888/licensingservice/default",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"licensingservice",
-										"default"
-									]
-								},
-								"description": "Get licensing service configuration (default)"
-							},
-							"response": []
+					"name": "[CS1-LS-dev] - Read licensing service dev config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"name": "Get_Licensing_Service_Config_From_Config_Server (Dev)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://localhost:8888/licensingservice/dev",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"licensingservice",
-										"dev"
-									]
-								},
-								"description": "Get licensing service configuration (dev)"
-							},
-							"response": []
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"dev"
+							]
 						},
-						{
-							"name": "Get_Licensing_Service_Config_From_Config_Server (Prod)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://localhost:8888/licensingservice/prod",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8888",
-									"path": [
-										"licensingservice",
-										"prod"
-									]
-								},
-								"description": "Get licensing service configuration (prod)"
-							},
-							"response": []
+						"description": "Get licensing service configuration (dev)"
+					},
+					"response": []
+				},
+				{
+					"name": "[CS1-LS-pro] - Read licensing service prod config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8888/licensingservice/prod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"licensingservice",
+								"prod"
+							]
+						},
+						"description": "Get licensing service configuration (prod)"
+					},
+					"response": []
+				},
+				{
+					"name": "[CS2] - Encrypt a value ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "6ytow2-;S3lA"
+						},
+						"url": {
+							"raw": "http://localhost:8888/encrypt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"encrypt"
+							]
 						}
-					],
-					"_postman_isSubFolder": true
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "EurekaServer",
+			"name": "EurekaServer [ES]",
 			"description": null,
 			"item": [
 				{
-					"name": "Get_Detailed_Info_Of_Organization__Service",
+					"name": "[ES1] - Display all the services registered with Eureka",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[ES2-OS] - Display the information of the organization service",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -175,43 +161,41 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "30a4fa6a-ea7d-4af5-916a-8018d1873a47",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				},
 				{
-					"name": "Get_Detailed_Info_Of_All_Registered_Services",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8761/eureka/apps",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8761",
-							"path": [
-								"eureka",
-								"apps"
-							]
-						}
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"id": "6e0e5f71-c1e4-4010-82d3-da95f75b8bed",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
 		{
-			"name": "ZuulServer",
+			"name": "ZuulServer [ZUS]",
 			"description": null,
 			"item": [
 				{
-					"name": "DownstreamServiceCalls",
-					"description": null,
+					"name": "LicensingService (ZUS-LS)",
+					"description": "",
 					"item": [
 						{
-							"name": "Get_Licenses_By_Organization_Id (Through Zuul Gateway)",
+							"name": "[ZUS-LS1] - Get a list of license records by organization ID",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -239,13 +223,254 @@
 							"response": []
 						},
 						{
-							"name": "Get_Organization_By_Organization_Id (With access token, Through Zuul Gateway)",
+							"name": "[ZUS-LS2] - Get a license record by organizatiion ID and license ID",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fcd02623-9e06-4902-b173-50c60ceb6e33",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-LS3] - Get a license record associated with the organization record by organization ID and license ID",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "31a0bfd4-3755-4352-ae9a-beb6eda29bd1",
+										"type": "text/javascript",
+										"exec": [
+											"const echoPostRequest = {",
+											"    url: 'http://localhost:8901/auth/oauth/token',",
+											"    method: 'POST',",
+											"    header: {",
+											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+											"    },",
+											"    body: {",
+											"        mode: 'formdata',",
+											"        formdata: [",
+											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+											"        ]",
+											"    }",
+											"};",
+											"",
+											"var getToken = true;",
+											"",
+											"if (!pm.environment.get('accessTokenExpiry') || ",
+											"    !pm.environment.get('currentAccessToken')) {",
+											"    console.log('Token or expiry date are missing');",
+											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+											"    console.log('Token is expired');",
+											"} else {",
+											"    getToken = false;",
+											"    console.log('Token and expiry date are all good');",
+											"}",
+											"",
+											"if (getToken === true) {",
+											"    pm.sendRequest(echoPostRequest, function (err, res) {",
+											"    console.log(err ? err : res.json());",
+											"        if (err === null) {",
+											"            console.log('Saving the token and expiry date');",
+											"            var responseJson = res.json();",
+											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+											"            ",
+											"            var expiryDate = new Date();",
+											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+											"            ",
+											"            console.log(\"access_token: \" + responseJson.access_token);",
+											"        }",
+											"    });",
+											"}"
+										]
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer 15c8bb91-6942-47ad-a849-bdc6c2fffc4f"
+										"value": "Bearer {{currentAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a/rest",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+										"rest"
+									]
+								},
+								"description": "This call will test the integration with Redis"
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-LS4] - Update a license by organization ID and license ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"licenseId\": \"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a\",\n  \"organizationId\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"productName\": \"CustomerPro\",\n  \"licenseType\": \"user\",\n  \"licenseMax\": 100,\n  \"licenseAllocated\": 5,\n  \"comment\": \"The default configuration\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-LS5] - Add a new license Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"licenseId\": \"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a\",\n  \"organizationId\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"productName\": \"CustomerPro\",\n  \"licenseType\": \"user\",\n  \"licenseMax\": 100,\n  \"licenseAllocated\": 5,\n  \"comment\": \"The default configuration\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-LS6] - Delete a license by the license ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"licensingservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+										"licenses",
+										"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "OrganizationService (ZUS-OS)",
+					"description": "",
+					"item": [
+						{
+							"name": "[ZUS-OS1] - Get an organization record by organizatiion ID",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "26cf2485-8af8-4165-a739-a79ed910ba1b",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{currentAccessToken}}"
 									}
 								],
 								"body": {
@@ -265,16 +490,218 @@
 										"organizations",
 										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
 									]
-								},
-								"description": "This call is to test zuul server can pass the access token to downstream service which is protect by access token."
+								}
 							},
 							"response": []
+						},
+						{
+							"name": "[ZUS-OS2] - Update an organization record by organization ID",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a68f6588-54e6-49fa-b966-63e93d00a76e",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{currentAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"name\": \"customer-crm-co\",\n  \"contactName\": \"Mark Balster\",\n  \"contactEmail\": \"mark.balster@customercrmco.com\",\n  \"contactPhone\": \"832-555-2222\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5555/organizationservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"organizationservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-OS3] - Add a new organization record",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e02b46c4-b0aa-4153-baf3-570d684d6e3b",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{currentAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"name\": \"customer-crm-co\",\n  \"contactName\": \"Mark Balster\",\n  \"contactEmail\": \"mark.balster@customercrmco.com\",\n  \"contactPhone\": \"832-555-2222\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5555/organizationservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"organizationservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[ZUS-OS4] - Delete an organization record by organization ID",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e06d1d50-2640-4c8c-80e0-8e3c6ba875b4",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{currentAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:5555/organizationservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5555",
+									"path": [
+										"organizationservice",
+										"v1",
+										"organizations",
+										"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ad8099ee-f92f-40ad-8c15-e6804550f3b6",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9dfda48-6110-417f-8ca3-4f58568f1134",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Get_All_Mapped_Routes",
+					"name": "[ZUS1] - Display all the managed routes with Zuul",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -299,102 +726,11 @@
 			]
 		},
 		{
-			"name": "LicensingService",
+			"name": "AuthenticationService [AS]",
 			"description": null,
 			"item": [
 				{
-					"name": "Check_Licensing_Service_Can_Get_Config_From_Config_Server",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/env",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"env"
-							]
-						},
-						"description": "Check licensing service can get the configuration parameters from config server or not"
-					},
-					"response": []
-				},
-				{
-					"name": "Get_Licenses_By_Organization_Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"v1",
-								"organizations",
-								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
-								"licenses",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get_License_By_Organization_Id_And_License_Id_And_Client_Type",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer 15c8bb91-6942-47ad-a849-bdc6c2fffc4f"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a/rest",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"v1",
-								"organizations",
-								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
-								"licenses",
-								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
-								"rest"
-							]
-						},
-						"description": "This call will test the integration with Redis"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "AuthenticationService",
-			"description": null,
-			"item": [
-				{
-					"name": "Get_Access_Token (For user john.carnell)",
+					"name": "[AS1] - Get an access token (john.carnell)",
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -455,7 +791,7 @@
 					"response": []
 				},
 				{
-					"name": "Get_Access_Token (For user william.woodward)",
+					"name": "[AS1] - Get an access token (william.woodward)",
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -516,7 +852,63 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve_User_Info",
+					"name": "[AS2] - Retrieve the user information (john.carnell)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "372e0eb2-e049-4919-b4c2-3f1fffcf06c7",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -525,8 +917,96 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer dd8de035-6dc7-4d5b-863d-23aa48b38809",
-								"type": "text"
+								"value": "Bearer {{currentAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8901/auth/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8901",
+							"path": [
+								"auth",
+								"user"
+							]
+						},
+						"description": "If it return the login page, add the setting into the application.yml of the authentication service.\n\nsecurity.oauth2.resource.filter-order=3"
+					},
+					"response": []
+				},
+				{
+					"name": "[AS2] - Retrieve the user information (william.woodward)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e4e8e70c-dafb-4d88-b7d3-47676e826caa",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"william.woodward\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password2\",        disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",        disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",         disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}"
 							}
 						],
 						"body": {
@@ -549,21 +1029,304 @@
 					},
 					"response": []
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1350c6c9-20a5-4699-b864-bd22522a6e90",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a03f7b1-dcc4-4a9a-bae4-090c25761c79",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
-			"name": "OrganizationService",
+			"name": "LicensingService [LS]",
 			"description": null,
 			"item": [
 				{
-					"name": "Get_Organization_By_Organzation_Id (With access token)",
+					"name": "[LS1] - Get a list of license records by organization ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LS2] - Get a license record by organizatiion ID and license ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fcd02623-9e06-4902-b173-50c60ceb6e33",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LS3] - Get a license record associated with the organization record by organization ID and license ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "31a0bfd4-3755-4352-ae9a-beb6eda29bd1",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer cb0a4eb5-17ff-41e8-bf05-da9866eefeac",
-								"type": "text"
+								"value": "Bearer {{currentAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a/rest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+								"rest"
+							]
+						},
+						"description": "This call will test the integration with Redis"
+					},
+					"response": []
+				},
+				{
+					"name": "[LS4] - Update a license by organization ID and license ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"licenseId\": \"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a\",\n  \"organizationId\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"productName\": \"CustomerPro\",\n  \"licenseType\": \"user\",\n  \"licenseMax\": 100,\n  \"licenseAllocated\": 5,\n  \"comment\": \"The default configuration\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LS5] - Add a new license",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"licenseId\": \"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a\",\n  \"organizationId\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"productName\": \"CustomerPro\",\n  \"licenseType\": \"user\",\n  \"licenseMax\": 100,\n  \"licenseAllocated\": 5,\n  \"comment\": \"The default configuration\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LS6] - Delete a license by the license ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+								"licenses",
+								"f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrganizationService [OS]",
+			"description": null,
+			"item": [
+				{
+					"name": "[OS1] - Get an organization record by organizatiion ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "26cf2485-8af8-4165-a739-a79ed910ba1b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}"
 							}
 						],
 						"body": {
@@ -587,19 +1350,29 @@
 					"response": []
 				},
 				{
-					"name": "Update_Organization_By_Organzation_Id (With access token)",
+					"name": "[OS2] - Update an organization record by organization ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a68f6588-54e6-49fa-b966-63e93d00a76e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer cb0a4eb5-17ff-41e8-bf05-da9866eefeac",
-								"type": "text"
+								"value": "Bearer {{currentAccessToken}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -618,12 +1391,203 @@
 								"organizations",
 								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[OS3] - Add a new organization record",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e02b46c4-b0aa-4153-baf3-570d684d6e3b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a\",\n  \"name\": \"customer-crm-co\",\n  \"contactName\": \"Mark Balster\",\n  \"contactEmail\": \"mark.balster@customercrmco.com\",\n  \"contactPhone\": \"832-555-2222\"\n}"
 						},
-						"description": "For testing the Kafka message queue in the chapter 8"
+						"url": {
+							"raw": "http://localhost:8060/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8060",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[OS4] - Delete an organization record by organization ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e06d1d50-2640-4c8c-80e0-8e3c6ba875b4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{currentAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8060/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8060",
+							"path": [
+								"v1",
+								"organizations",
+								"e254f8c-c442-4ebe-a82a-e2fc1d1ff78a"
+							]
+						}
 					},
 					"response": []
 				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3b209568-59e0-4991-be83-42b65a5c0b39",
+						"type": "text/javascript",
+						"exec": [
+							"const echoPostRequest = {",
+							"    url: 'http://localhost:8901/auth/oauth/token',",
+							"    method: 'POST',",
+							"    header: {",
+							"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+							"    },",
+							"    body: {",
+							"        mode: 'formdata',",
+							"        formdata: [",
+							"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+							"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+							"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+							"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+							"        ]",
+							"    }",
+							"};",
+							"",
+							"var getToken = true;",
+							"",
+							"if (!pm.environment.get('accessTokenExpiry') || ",
+							"    !pm.environment.get('currentAccessToken')) {",
+							"    console.log('Token or expiry date are missing');",
+							"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+							"    console.log('Token is expired');",
+							"} else {",
+							"    getToken = false;",
+							"    console.log('Token and expiry date are all good');",
+							"}",
+							"",
+							"if (getToken === true) {",
+							"    pm.sendRequest(echoPostRequest, function (err, res) {",
+							"    console.log(err ? err : res.json());",
+							"        if (err === null) {",
+							"            console.log('Saving the token and expiry date');",
+							"            var responseJson = res.json();",
+							"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+							"            ",
+							"            var expiryDate = new Date();",
+							"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+							"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+							"            ",
+							"            console.log(\"access_token: \" + responseJson.access_token);",
+							"        }",
+							"    });",
+							"}"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "526f56c1-77ba-4c4f-8d3c-89109de98b6f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9c3453ca-86c5-4d1a-ac33-878d4dd48cfa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dd8c6c1e-1512-4d94-ac79-4024450d0fe5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5328a5d5-3271-45ad-934f-8c4debeea1a1",
+			"key": "currentAccessToken",
+			"value": "",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "85ce9bda-e0ee-4bdb-8aef-3851177edcb5",
+			"key": "accessTokenExpiry",
+			"value": "",
+			"type": "string",
+			"description": ""
 		}
 	]
 }
