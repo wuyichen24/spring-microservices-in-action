@@ -36,7 +36,7 @@ subprojects {
     apply plugin: "jacoco"
     apply plugin: io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 
-    buildDir = new File(rootProject.projectDir, "_build/" + project.name)
+    buildDir = new File(rootProject.projectDir, "build/" + project.name)
 
     jacoco {
         toolVersion = "0.7.6.201602180812"
