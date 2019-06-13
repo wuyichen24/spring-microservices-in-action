@@ -24,17 +24,18 @@ buildscript {
     }
     dependencies { 
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE"
     }
 }
 
 apply plugin: "org.sonarqube"
 apply plugin: "io.spring.dependency-management"
 
-subprojects {
+configure(subprojects.findAll { it.name.contains("-")}) {
     apply plugin: 'java'
     apply plugin: "jacoco"
     apply plugin: io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+    apply plugin: 'org.springframework.boot'
 
     buildDir = new File(rootProject.projectDir, "build/" + project.name)
 
@@ -77,13 +78,14 @@ subprojects {
         jcenter()
     }
 	
-	jar {
-	    manifest {
-	        attributes('Implementation-Title': project.name,
-	                   'Implementation-Version': project.version)
-	    }
-	}
+//	jar {
+//	    manifest {
+//	        attributes('Implementation-Title': project.name,
+//	                   'Implementation-Version': project.version)
+//	    }
+//	}
 
+    
 
     // common dependencies for all subprojects
     dependencies {
@@ -100,6 +102,6 @@ subprojects {
         compile 'org.testng:testng:6.5.2'
         compile 'org.easymock:easymock:3.4'
         
-		compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.4.4.RELEASE', ext: 'pom'
+		//compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.4.4.RELEASE', ext: 'pom'
     }
 }
