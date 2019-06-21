@@ -7,3 +7,4 @@ bin/**
 **/.settings
 **/.classpath
 **/org.sonarlint.eclipse.core.prefs
+/build/

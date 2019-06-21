@@ -15,12 +15,16 @@
  */
 package com.thoughtmechanix.authentication.security;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * The configuration class to define the authentication information at 
@@ -33,6 +37,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+	@Autowired
+    private DataSource dataSource;
+	
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	
 	@Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -48,10 +57,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("john.carnell").password("password1").roles("USER")                 // Define the first user: john.carnell with the password "password1" and the role "USER"
-                .and()
-                .withUser("william.woodward").password("password2").roles("USER", "ADMIN");   // Define the second user: william.woodward with the password "password2" and the role "ADMIN"
+// Store in memory
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("john.carnell").password("password1").roles("USER")                 // Define the first user: john.carnell with the password "password1" and the role "USER"
+//                .and()
+//                .withUser("william.woodward").password("password2").roles("USER", "ADMIN");   // Define the second user: william.woodward with the password "password2" and the role "ADMIN"
+
+// Store in databse
+    	auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder);
     }
 }

@@ -1,30 +1,78 @@
+---------------------------------------
+-- For Store Credentials in database
+---------------------------------------
+DROP TABLE IF EXISTS oauth_client_details;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS authorities;
+
+-- client table
+CREATE TABLE oauth_client_details (
+  client_id                VARCHAR(256)  PRIMARY KEY,
+  resource_ids             VARCHAR(256),
+  client_secret            VARCHAR(256),
+  scope                    VARCHAR(256),
+  authorized_grant_types   VARCHAR(256),
+  web_server_redirect_uri  VARCHAR(256),
+  authorities              VARCHAR(256),
+  access_token_validity    INTEGER,
+  refresh_token_validity   INTEGER,
+  additional_information   VARCHAR(4096),
+  autoapprove              VARCHAR(256)
+);
+
+-- user table
+CREATE TABLE users (
+  username  VARCHAR(256)  NOT NULL  PRIMARY KEY,
+  password  VARCHAR(256)  NOT NULL,
+  enabled   BOOLEAN       NOT NULL
+);
+  
+CREATE TABLE authorities (
+  username   VARCHAR(256),
+  authority  VARCHAR(256)
+);
+
+-- insert clients
+INSERT INTO oauth_client_details
+    (client_id, client_secret, scope, authorized_grant_types,
+    web_server_redirect_uri, authorities, 
+    access_token_validity, refresh_token_validity, 
+    additional_information, autoapprove)
+VALUES
+    ('eagleeye', 'thisissecret', 'webclient,mobileclient', 'refresh_token,password,client_credentials', 
+    null, null, 
+    36000, 36000, 
+    null, true);
+
+-- insert users
+INSERT INTO users(username,password,enabled) VALUES ('john.carnell',    '$2a$04$N.D.ZTXhH9F2i9Gf1q6CTuvXRRTJWMHlKhftTu9OKMj.xTPCtZNGi', true);
+INSERT INTO users(username,password,enabled) VALUES ('william.woodward','$2a$04$Xn/P6VTrkr88jugCJ4IhHuO6ClYCJmjO/nPAcbaI1EQMEvn3CnnWK', true);
+
+-- insert authorities
+INSERT INTO authorities(username,authority) VALUES ('john.carnell',    'ADMIN');
+INSERT INTO authorities(username,authority) VALUES ('john.carnell',    'USER');
+INSERT INTO authorities(username,authority) VALUES ('william.woodward','ADMIN');
+---------------------------------------
+-- For Application's tables
+---------------------------------------
+
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS user_orgs;
 
-CREATE  TABLE users (
-  user_name VARCHAR(100) NOT NULL ,
-  password VARCHAR(100) NOT NULL ,
-  enabled boolean NOT NULL ,
-  PRIMARY KEY (user_name));
-
 CREATE TABLE user_roles (
-  user_role_id SERIAL,
-  user_name varchar(100) NOT NULL,
-  role varchar(100) NOT NULL,
-  PRIMARY KEY (user_role_id));
+  user_role_id          SERIAL   PRIMARY KEY,
+  username varchar(100) NOT NULL,
+  role varchar(100)     NOT NULL
+);
 
 CREATE TABLE user_orgs (
-  organization_id   VARCHAR(100)  NOT NULL,
-  user_name         VARCHAR(100)   NOT NULL,
-  PRIMARY KEY (user_name));
+  organization_id  VARCHAR(100)  NOT NULL  PRIMARY KEY,
+  username         VARCHAR(100)  NOT NULL
+);
 
-INSERT INTO users(user_name,password,enabled) VALUES ('john.carnell','$2a$04$NX3QTkBJB00upxKeaKqFBeoIVc9JHvwVnj1lItxNphRj34wNx5wlu', true);
-INSERT INTO users(user_name,password,enabled) VALUES ('william.woodward','$2a$04$lM2hIsZVNYrQLi8mhvnTA.pheZtmzeivz6fyxCr9GZ6YSfP6YibCW', true);
+INSERT INTO user_roles (username, role) VALUES ('john.carnell', 'ROLE_USER');
+INSERT INTO user_roles (username, role) VALUES ('william.woodward', 'ROLE_ADMIN');
+INSERT INTO user_roles (username, role) VALUES ('william.woodward', 'ROLE_USER');
 
-INSERT INTO user_roles (user_name, role) VALUES ('john.carnell', 'ROLE_USER');
-INSERT INTO user_roles (user_name, role) VALUES ('william.woodward', 'ROLE_ADMIN');
-INSERT INTO user_roles (user_name, role) VALUES ('william.woodward', 'ROLE_USER');
-
-INSERT INTO user_orgs (organization_id, user_name) VALUES ('d1859f1f-4bd7-4593-8654-ea6d9a6a626e', 'john.carnell');
-INSERT INTO user_orgs (organization_id, user_name) VALUES ('42d3d4f5-9f33-42f4-8aca-b7519d6af1bb', 'william.woodward');
+INSERT INTO user_orgs (organization_id, username) VALUES ('d1859f1f-4bd7-4593-8654-ea6d9a6a626e', 'john.carnell');
+INSERT INTO user_orgs (organization_id, username) VALUES ('42d3d4f5-9f33-42f4-8aca-b7519d6af1bb', 'william.woodward');

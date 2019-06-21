@@ -15,6 +15,8 @@
  */
 package com.thoughtmechanix.authentication.security;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,17 +38,24 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {            // Define what client applications are registered with the service
-        clients.inMemory()                                                                      // Store the application information in memory
-                .withClient("eagleeye")                                                         // Specify which client application will register
-                .secret("thisissecret")                                                         // Specify the secret which will be used to get the access token
-                .authorizedGrantTypes("refresh_token", "password", "client_credentials")        // Provide a list of the authorization grant types that will be supported by the service
-                .scopes("webclient", "mobileclient");                                           // Define the types of the client applications can get the access token from the service
+// Store in memory
+//        clients.inMemory()                                                                      // Store the application information in memory
+//                .withClient("eagleeye")                                                         // Specify which client application will register
+//                .secret("thisissecret")                                                         // Specify the secret which will be used to get the access token
+//                .authorizedGrantTypes("refresh_token", "password", "client_credentials")        // Provide a list of the authorization grant types that will be supported by the service
+//                .scopes("webclient", "mobileclient");                                           // Define the types of the client applications can get the access token from the service
+    	
+// Store in database
+    	clients.jdbc(dataSource);
     }
 
     @Override
