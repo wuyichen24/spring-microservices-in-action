@@ -63,6 +63,7 @@ This microservices project is based on
    - [Zuul Filters](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zuul-Filters)
    - [Protect Service with Spring Security and OAuth2](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Protect-Service-with-Spring-Security-and-OAuth2)
    - [Use JWT as Access Token](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Use-JWT-as-Access-Token)
+   - [Store Clients and Users' Credentials to DB](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Store-Clients-and-Users'-Credentials-to-DB)
    - [Integrate with Message Queue (Kafka)](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Message-Queue-(Kafka))
    - [Integrate with Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Integrate-with-Redis)
    - [Tune Logging](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Tune-Logging)
