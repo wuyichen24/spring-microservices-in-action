@@ -36,6 +36,10 @@ spring:
     config:
       enabled: true                               # retrieve config from config server
 
+endpoints:
+  routes:
+    sensitive: false
+
 # Zuul configuration
 #zuul:
   # ignored-services: '*'                           # Exclude all the auto-generated routes between the Eureka service IDs and the registered services

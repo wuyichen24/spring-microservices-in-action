@@ -39,7 +39,7 @@ public class UserOrganization implements Serializable {
     String organizationId;
 
     @Id
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "username", nullable = false)
     String userName;
 
     public String getUserName()                            { return userName;                      }
