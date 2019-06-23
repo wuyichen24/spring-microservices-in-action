@@ -56,23 +56,12 @@ INSERT INTO authorities(username,authority) VALUES ('william.woodward','ADMIN');
 -- For Application's tables
 ---------------------------------------
 
-DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS user_orgs;
-
-CREATE TABLE user_roles (
-  user_role_id          SERIAL   PRIMARY KEY,
-  username varchar(100) NOT NULL,
-  role varchar(100)     NOT NULL
-);
 
 CREATE TABLE user_orgs (
   organization_id  VARCHAR(100)  NOT NULL  PRIMARY KEY,
   username         VARCHAR(100)  NOT NULL
 );
-
-INSERT INTO user_roles (username, role) VALUES ('john.carnell', 'ROLE_USER');
-INSERT INTO user_roles (username, role) VALUES ('william.woodward', 'ROLE_ADMIN');
-INSERT INTO user_roles (username, role) VALUES ('william.woodward', 'ROLE_USER');
 
 INSERT INTO user_orgs (organization_id, username) VALUES ('d1859f1f-4bd7-4593-8654-ea6d9a6a626e', 'john.carnell');
 INSERT INTO user_orgs (organization_id, username) VALUES ('42d3d4f5-9f33-42f4-8aca-b7519d6af1bb', 'william.woodward');
