@@ -18,6 +18,8 @@ There are the differences between this source code and the original source code:
 - Change the port of the authentication service to 8901 to make it same with the example in the book.
 - Add the integration of Splunk for log aggregation locally (use both local Splunk and remote Papertrail).
 - Use the original functionality in Logback for sending the log to the log servers (Splunk & Papertrail) rather than the solution in the Book (use Logspout to direct the docker output to the log servers).
+- Replace the user_roles table by the authorities table for storing users' credentials to DB.
+- Change the column name from user_name to username for the user_orgs table and the users table.
 - Add comments to make the code easy to read.
 
 ![](https://github.com/wuyichen24/spring-microservices-in-action/blob/master/readme/pics/whole_structure/whole_structure.png)
