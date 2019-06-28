@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS authorities;
 
 -- client table
 CREATE TABLE oauth_client_details (
-  client_id                VARCHAR(256)  PRIMARY KEY,
+  client_id                VARCHAR(256)  NOT NULL  PRIMARY KEY,
   resource_ids             VARCHAR(256),
   client_secret            VARCHAR(256),
   scope                    VARCHAR(256),
@@ -28,8 +28,9 @@ CREATE TABLE users (
 );
   
 CREATE TABLE authorities (
-  username   VARCHAR(256),
-  authority  VARCHAR(256)
+  id         SERIAL         NOT NULL  PRIMARY KEY,
+  username   VARCHAR(256) NOT NULL,
+  authority  VARCHAR(256) NOT NULL
 );
 
 -- insert clients

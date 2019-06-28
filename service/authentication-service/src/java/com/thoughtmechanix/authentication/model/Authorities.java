@@ -17,32 +17,33 @@ package com.thoughtmechanix.authentication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
- * The entity class for user organization.
+ * The entity class for authorities.
  * 
  * @author  Wuyi Chen
- * @date    06/10/2019
+ * @date    06/26/2019
  * @version 1.0
  * @since   1.0
  */
 @Entity
-@Table(name = "user_orgs")
-public class UserOrganization implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "authorities")
+public class Authorities {
+	@Id
+    @GeneratedValue
+    private Long id;
+	
+	@Column(name = "username", nullable = false)
+	private String username;
+	
+	@Column(name = "authority", nullable = false)
+	private String authority;
 
-	@Column(name = "organization_id", nullable = false)
-    String organizationId;
-
-    @Id
-    @Column(name = "username", nullable = false)
-    String username;
-
-    public String getUsername()                            { return username;                      }
-    public void   setUsername(String username)             { this.username = username;             }
-    public String getOrganizationId()                      { return organizationId;                }
-    public void   setOrganizationId(String organizationId) { this.organizationId = organizationId; }
+	public String getUsername()                  { return username;            }
+	public void   setUsername(String username)   { this.username = username;   }
+	public String getAuthority()                 { return authority;           }
+	public void   setAuthority(String authority) { this.authority = authority; }
 }

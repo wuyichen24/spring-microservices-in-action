@@ -15,12 +15,13 @@
  */
 package com.thoughtmechanix.authentication.repository;
 
-import com.thoughtmechanix.authentication.model.UserOrganization;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.thoughtmechanix.authentication.model.OauthClientDetails;
+
 /**
- * The interface for customizing queries to org_users table
+ * The interface for customizing queries to oauth_client_details table
  * 
  * <p>This interface is extending {@code CrudRepository}, so you MUST NOT 
  * implement the methods in this interface. The Spring JPA repository will 
@@ -32,11 +33,11 @@ import org.springframework.stereotype.Repository;
  * @see <a href="http://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods.query-creation">QueryCreation</a>
  * 
  * @author  Wuyi Chen
- * @date    06/10/2019
+ * @date    06/26/2019
  * @version 1.0
  * @since   1.0
  */
 @Repository
-public interface OrgUserRepository extends CrudRepository<UserOrganization,String> {
-    public UserOrganization findByUsername(String username);
+public interface OauthClientDetailsRepository extends CrudRepository<OauthClientDetails,String> {
+	public OauthClientDetails findByClientId(String clientId);
 }

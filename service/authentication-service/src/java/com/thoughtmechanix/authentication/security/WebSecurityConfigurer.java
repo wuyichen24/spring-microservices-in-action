@@ -25,6 +25,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * The configuration class to define the authentication information at 
@@ -40,7 +41,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Autowired
     private DataSource dataSource;
 	
-	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	public static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Override
     @Bean
