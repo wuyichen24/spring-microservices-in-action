@@ -1,13 +1,13 @@
 rootProject.name = 'spring-microservices-in-action'
 
-include 'example:authentication-service-jwt'
+include 'example:smia-authentication-service-jwt'
 
-include 'server:config-server'
-include 'server:eureka-server'
-include 'server:zuul-server'
-include 'server:zipkin-server'
-include 'service:authentication-service'
-include 'service:licensing-service'
-include 'service:organization-service'
-include 'service:specialroutes-service'
+include 'server:smia-config-server'
+include 'server:smia-eureka-server'
+include 'server:smia-zuul-server'
+include 'server:smia-zipkin-server'
+include 'service:smia-authentication-service'
+include 'service:smia-licensing-service'
+include 'service:smia-organization-service'
+include 'service:smia-specialroutes-service'
 
