@@ -1,13 +1,12 @@
 {
 	"info": {
-		"_postman_id": "adde51bf-bb5e-403e-ba66-3eb550e26407",
+		"_postman_id": "987ce269-3f08-420d-b3a4-48154f0023f0",
 		"name": "Spring-Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "ConfigServer [CS]",
-			"description": null,
 			"item": [
 				{
 					"name": "[CS1-LS-def] - Read licensing service default config",
@@ -111,7 +110,6 @@
 		},
 		{
 			"name": "EurekaServer [ES]",
-			"description": null,
 			"item": [
 				{
 					"name": "[ES1] - Display all the services registered with Eureka",
@@ -188,11 +186,9 @@
 		},
 		{
 			"name": "ZuulServer [ZUS]",
-			"description": null,
 			"item": [
 				{
 					"name": "LicensingService (ZUS-LS)",
-					"description": "",
 					"item": [
 						{
 							"name": "[ZUS-LS1] - Get a list of license records by organization ID",
@@ -424,7 +420,10 @@
 							"request": {
 								"method": "DELETE",
 								"header": [],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:5555/licensingservice/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
 									"protocol": "http",
@@ -449,7 +448,6 @@
 				},
 				{
 					"name": "OrganizationService (ZUS-OS)",
-					"description": "",
 					"item": [
 						{
 							"name": "[ZUS-OS1] - Get an organization record by organizatiion ID",
@@ -727,11 +725,9 @@
 		},
 		{
 			"name": "AuthenticationService [AS]",
-			"description": null,
 			"item": [
 				{
 					"name": "Clients",
-					"description": "",
 					"item": [
 						{
 							"name": "[AS3] - Get a client record by client ID",
@@ -740,54 +736,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -802,7 +754,10 @@
 										"value": "Bearer {{currentAccessToken}}"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:8901/auth/client/eagleeye",
 									"protocol": "http",
@@ -826,54 +781,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -897,7 +808,7 @@
 									"raw": "{\n    \"clientId\": \"eagleeye\",\n    \"resourceIds\": null,\n    \"clientSecret\": \"123456cs\",\n    \"scope\": \"webclient,mobileclient\",\n    \"authorizedGrantTypes\": \"refresh_token,password,client_credentials\",\n    \"webServerRedirectUri\": null,\n    \"authorities\": null,\n    \"accessTokenValidity\": 36000,\n    \"refreshTokenValidity\": 36000,\n    \"additionalInformation\": null,\n    \"autoapprove\": \"1\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8901/auth/client/eagleeye",
+									"raw": "http://localhost:8901/auth/client",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -905,8 +816,7 @@
 									"port": "8901",
 									"path": [
 										"auth",
-										"client",
-										"eagleeye"
+										"client"
 									]
 								}
 							},
@@ -919,54 +829,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -990,7 +856,7 @@
 									"raw": "{\n    \"clientId\": \"eagleeye\",\n    \"resourceIds\": null,\n    \"clientSecret\": \"123456cs\",\n    \"scope\": \"webclient,mobileclient\",\n    \"authorizedGrantTypes\": \"refresh_token,password,client_credentials\",\n    \"webServerRedirectUri\": null,\n    \"authorities\": null,\n    \"accessTokenValidity\": 36000,\n    \"refreshTokenValidity\": 36000,\n    \"additionalInformation\": null,\n    \"autoapprove\": \"1\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8901/auth/client/eagleeye",
+									"raw": "http://localhost:8901/auth/client",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -998,8 +864,7 @@
 									"port": "8901",
 									"path": [
 										"auth",
-										"client",
-										"eagleeye"
+										"client"
 									]
 								}
 							},
@@ -1012,54 +877,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1074,7 +895,10 @@
 										"value": "Bearer {{currentAccessToken}}"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:8901/auth/client/eagleeye",
 									"protocol": "http",
@@ -1092,11 +916,76 @@
 							"response": []
 						}
 					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "91811a19-bbc1-4bcb-9bb7-9512dbe6d954",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e87edd95-2a2d-4f9c-9ddd-2dce4d70d15a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Users",
-					"description": "",
 					"item": [
 						{
 							"name": "[AS7] - Get a user record with authorities by username",
@@ -1105,54 +994,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1167,7 +1012,10 @@
 										"value": "Bearer {{currentAccessToken}}"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:8901/auth/user/john.carnell",
 									"protocol": "http",
@@ -1191,54 +1039,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1283,54 +1087,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1375,54 +1135,10 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "f10b8c06-e4f2-4939-a37b-eded50b6e672",
-										"type": "text/javascript",
 										"exec": [
-											"const echoPostRequest = {",
-											"    url: 'http://localhost:8901/auth/oauth/token',",
-											"    method: 'POST',",
-											"    header: {",
-											"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
-											"    },",
-											"    body: {",
-											"        mode: 'formdata',",
-											"        formdata: [",
-											"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
-											"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
-											"        ]",
-											"    }",
-											"};",
-											"",
-											"var getToken = true;",
-											"",
-											"if (!pm.environment.get('accessTokenExpiry') || ",
-											"    !pm.environment.get('currentAccessToken')) {",
-											"    console.log('Token or expiry date are missing');",
-											"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
-											"    console.log('Token is expired');",
-											"} else {",
-											"    getToken = false;",
-											"    console.log('Token and expiry date are all good');",
-											"}",
-											"",
-											"if (getToken === true) {",
-											"    pm.sendRequest(echoPostRequest, function (err, res) {",
-											"    console.log(err ? err : res.json());",
-											"        if (err === null) {",
-											"            console.log('Saving the token and expiry date');",
-											"            var responseJson = res.json();",
-											"            pm.environment.set('currentAccessToken', responseJson.access_token);",
-											"            ",
-											"            var expiryDate = new Date();",
-											"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
-											"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
-											"            ",
-											"            console.log(\"access_token: \" + responseJson.access_token);",
-											"        }",
-											"    });",
-											"}"
-										]
+											""
+										],
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -1437,7 +1153,10 @@
 										"value": "Bearer {{currentAccessToken}}"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "http://localhost:8901/auth/user/john.carnell",
 									"protocol": "http",
@@ -1453,6 +1172,72 @@
 								}
 							},
 							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "009f40e4-f1fd-49ef-aa54-d148c3d5f363",
+								"type": "text/javascript",
+								"exec": [
+									"const echoPostRequest = {",
+									"    url: 'http://localhost:8901/auth/oauth/token',",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Authorization':'Basic ZWFnbGVleWU6dGhpc2lzc2VjcmV0',",
+									"    },",
+									"    body: {",
+									"        mode: 'formdata',",
+									"        formdata: [",
+									"            {key: \"username\",   value: \"john.carnell\", disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"password\",   value: \"password1\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"scope\",      value: \"webclient\",    disabled: false, description: {content:\"\", type:\"text/plain\"}},",
+									"            {key: \"grant_type\", value: \"password\",     disabled: false, description: {content:\"\", type:\"text/plain\"}}",
+									"        ]",
+									"    }",
+									"};",
+									"",
+									"var getToken = true;",
+									"",
+									"if (!pm.environment.get('accessTokenExpiry') || ",
+									"    !pm.environment.get('currentAccessToken')) {",
+									"    console.log('Token or expiry date are missing');",
+									"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+									"    console.log('Token is expired');",
+									"} else {",
+									"    getToken = false;",
+									"    console.log('Token and expiry date are all good');",
+									"}",
+									"",
+									"if (getToken === true) {",
+									"    pm.sendRequest(echoPostRequest, function (err, res) {",
+									"    console.log(err ? err : res.json());",
+									"        if (err === null) {",
+									"            console.log('Saving the token and expiry date');",
+									"            var responseJson = res.json();",
+									"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+									"            ",
+									"            var expiryDate = new Date();",
+									"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+									"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+									"            ",
+									"            console.log(\"access_token: \" + responseJson.access_token);",
+									"        }",
+									"    });",
+									"}"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "750498ac-21d9-4400-80ad-d6b2c1055e93",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					],
 					"_postman_isSubFolder": true
@@ -1783,7 +1568,6 @@
 		},
 		{
 			"name": "LicensingService [LS]",
-			"description": null,
 			"item": [
 				{
 					"name": "[LS1] - Get a list of license records by organization ID",
@@ -2010,7 +1794,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a",
 							"protocol": "http",
@@ -2033,7 +1820,6 @@
 		},
 		{
 			"name": "OrganizationService [OS]",
-			"description": null,
 			"item": [
 				{
 					"name": "[OS1] - Get an organization record by organizatiion ID",
@@ -2307,15 +2093,13 @@
 			"id": "085f1313-eb11-4cca-9505-80a955b6585f",
 			"key": "currentAccessToken",
 			"value": "",
-			"type": "string",
-			"description": ""
+			"type": "string"
 		},
 		{
 			"id": "6b0a2de9-4231-4725-84ff-adef9817841a",
 			"key": "accessTokenExpiry",
 			"value": "",
-			"type": "string",
-			"description": ""
+			"type": "string"
 		}
 	]
 }
