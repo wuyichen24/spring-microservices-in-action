@@ -64,6 +64,8 @@ This source code was re-organized by the [original source code](https://www.mann
    - [Papertrail](https://papertrailapp.com/)
 - **Trace**
    - [Apache Zipkin](https://zipkin.apache.org/)
+- **Cluster Coordination**
+   - [Apache ZooKeeper](https://zookeeper.apache.org/)
 
 ## Differences to The Original Source Code
 - Use Gradle as Java build automation tool rather than Maven.
@@ -78,6 +80,7 @@ This source code was re-organized by the [original source code](https://www.mann
 - Add comments to make the code easy to read.
 
 ## Getting Started
+- Gradle (Version >= 4.4)
 - [ZooKeeper](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-zookeeper)
 - [Kafka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-kafka)
 - [Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-redis)
