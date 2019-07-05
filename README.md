@@ -22,13 +22,13 @@ This source code was re-organized by the [original source code](https://www.mann
    - [Licensing](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Licensing-Service): Manage (CRUD) license records.
    - [Organization](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Organization-Service): Manage (CRUD) organization records.
    - [Authentication](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Authentication-Service): Issue and validate access tokens, manage clients' and users' credentials and roles.
-   - [Special Routes](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Special-Routes-Service): Provide an alternate endpoint for a certain service
+   - [Special Routes](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Special-Routes-Service): Provide an alternate endpoint for a certain service.
 - [**Database**](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Database): Store license and organization records, clients' and users' credentials, alternate routes of any service.
 - [**Message Queue (Kafka)**](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Message-Queue): Notify the licensing service about any organization record modification.
 - [**Cache (Redis)**](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Cache): Cache any organization record which has been loaded before.
 - [**Log Server**]()
    - [Splunk](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Splunk-Server): Collect log information in local.
-   - [Papertrail](): Collect log information in cloud
+   - [Papertrail](): Collect log information in cloud.
 
 ## Technology Stack
 - **Core**
