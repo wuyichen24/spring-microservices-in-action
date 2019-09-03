@@ -85,6 +85,7 @@ This source code was re-organized by the [original source code](https://www.mann
 - [Kafka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-apache-kafka)
 - [Redis](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Getting-Started#install-redis)
 - [Splunk](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Splunk)
+- [Command Memo](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Command-Memo)
 
 ## Technical Essentials
 - **Spring Basics**
