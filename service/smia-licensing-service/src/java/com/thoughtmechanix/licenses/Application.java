@@ -19,6 +19,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.thoughtmechanix.licenses.config.ServiceConfig;
+import com.thoughtmechanix.licenses.model.License;
+import com.thoughtmechanix.licenses.repository.LicenseRepository;
 import com.thoughtmechanix.licenses.utils.UserContextInterceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +52,8 @@ import org.springframework.web.client.RestTemplate;
  * @since   1.0
  */
 @SpringBootApplication
-@EntityScan(basePackages = {"com.thoughtmechanix.licenses.model"})
-@EnableJpaRepositories(basePackages = {"com.thoughtmechanix.licenses.repository"})
+@EntityScan(basePackageClasses = {License.class})
+@EnableJpaRepositories(basePackageClasses = {LicenseRepository.class})
 @EnableDiscoveryClient       // Enable Spring DiscoveryClient (call services registered with service discovery engine)
 @EnableFeignClients          // Enable Netflix Feign (call services registered with service discovery engine)
 @EnableCircuitBreaker        // Enable Hystrix
