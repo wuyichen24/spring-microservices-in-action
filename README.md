@@ -118,3 +118,6 @@ This source code was re-organized by the [original source code](https://www.mann
    - [Send Trace to Zipkin](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Send-Trace-to-Zipkin)
 - **Deployment**
    - [Build Runnable Jar](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Build-Runnable-Jar)
+
+## Study Notes
+- [Google Doc](https://docs.google.com/document/d/1yaZZDy-Sf-pwobK85re5FQCU8X7GGXpmERXtA5CXm4o/edit?usp=sharing)
