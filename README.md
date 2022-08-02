@@ -16,8 +16,8 @@ This source code was re-organized by the [original source code](https://www.mann
 - **Servers**
    - [Config](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Config-Server): Provide the configuration parameters for other services.
    - [Eureka](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Eureka-Server): Service discovery.
-   - [Zipkin](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zipkin-Server): API gateway.
-   - [Zuul](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zuul-Server): Collect tracing data.
+   - [Zipkin](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zipkin-Server): Collect tracing data.
+   - [Zuul](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Zuul-Server): API gateway.
 - **Services**
    - [Licensing](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Licensing-Service): Manage (CRUD) license records.
    - [Organization](https://github.com/wuyichen24/spring-microservices-in-action/wiki/Organization-Service): Manage (CRUD) organization records.
